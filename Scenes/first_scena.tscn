@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bws2jpaamsvkl"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/first_scena.cs" id="1_38uot"]
+[ext_resource type="Texture2D" uid="uid://1d26ndkp8oyt" path="res://Scenes/Icons/Scen1.png" id="1_wevpc"]
+[ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="2_fjwjo"]
+
+[node name="FirstScena" type="Node2D"]
+script = ExtResource("1_38uot")
+
+[node name="Background" type="Area2D" parent="."]
+position = Vector2(577.25, 324.25)
+scale = Vector2(0.921938, 0.88546)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background"]
+position = Vector2(-0.271168, 0.847018)
+polygon = PackedVector2Array(-623.958, 164.604, -542.607, 135.241, -494.882, 144.275, -431.971, 167.992, -319.165, 171.38, -238.899, 149.922, -154.295, 144.275, -103.315, 146.534, -42.5734, 161.216, -11.1179, 167.992, 62.6398, 154.44, 152.668, 136.37, 174.361, 130.723, 148.329, 208.649, 230.764, 191.708, 216.663, 126.206, 290.421, 132.982, 397.804, 144.275, 487.831, 127.335, 543.15, 120.559, 599.553, 144.275, 624.5, 136.37, 623.686, -365.912, -625.856, -367.041)
+
+[node name="Scen1" type="Sprite2D" parent="Background"]
+texture = ExtResource("1_wevpc")
+
+[node name="Character" parent="." instance=ExtResource("2_fjwjo")]
+position = Vector2(74, 600)
+script = null
