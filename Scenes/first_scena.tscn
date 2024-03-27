@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bws2jpaamsvkl"]
+[gd_scene load_steps=7 format=3 uid="uid://bws2jpaamsvkl"]
 
 [ext_resource type="Script" path="res://Scenes/Scripts/first_scena.cs" id="1_38uot"]
 [ext_resource type="Texture2D" uid="uid://1d26ndkp8oyt" path="res://Scenes/Icons/Scen1.png" id="1_wevpc"]
@@ -7,6 +7,12 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikxdj"]
 size = Vector2(128, 128)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1bi07"]
+vertices = PackedVector2Array(361, 468, 360, 467, 479, 465, 562, 483, 718, 455, 696, 526, 9, 637, 1131, 467, 1143, 461, 1143, 638, 806, 505, 791, 449, 945, 465, 11, 477, 74, 455, 173, 483, 286, 487, 1076, 441)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(7, 8, 9), PackedInt32Array(10, 11, 12), PackedInt32Array(7, 9, 6, 5), PackedInt32Array(6, 13, 14, 15), PackedInt32Array(6, 15, 16), PackedInt32Array(12, 17, 7, 10), PackedInt32Array(6, 16, 0, 2, 3), PackedInt32Array(10, 7, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(2, 471, 76, 445, 175, 473, 285, 477, 358, 458, 481, 455, 562, 473, 734, 442, 711, 513, 794, 497, 778, 438, 945, 455, 1077, 431, 1131, 456, 1153, 447, 1153, 649, -1, 647)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="FirstScena" type="Node2D"]
 script = ExtResource("1_38uot")
@@ -33,6 +39,9 @@ texture = ExtResource("3_1cq1q")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(619, 547)
 shape = SubResource("RectangleShape2D_ikxdj")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_1bi07")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_fjwjo")]
 position = Vector2(73, 568)

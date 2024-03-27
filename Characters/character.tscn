@@ -8,7 +8,6 @@ size = Vector2(42, 27.5)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(0, 1)
-disable_mode = 2
 script = ExtResource("1_gxmgi")
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -18,3 +17,6 @@ texture = ExtResource("1_112sr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_5jq1d")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
