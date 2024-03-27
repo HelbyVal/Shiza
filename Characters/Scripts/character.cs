@@ -4,36 +4,29 @@ using System;
 public partial class character : CharacterBody2D
 {
 	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
+	Vector2 click_position = new Vector2();
+	Vector2 target_position = new Vector2();
 
-	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+    public override void _Ready()
+    {
+        click_position = Position;
+    }
 
-	public override void _PhysicsProcess(double delta)
+    public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 
-		// Add the gravity.
-		if (!IsOnFloor())
-			velocity.Y += gravity * (float)delta;
-
 		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-			velocity.Y = JumpVelocity;
-
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
-		{
-			velocity.X = direction.X * Speed;
-		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+		if (Input.IsActionJustPressed("mouse_click")){
+			click_position = GetGlobalMousePosition();
 		}
 
-		Velocity = velocity;
-		MoveAndSlide();
+		if(Position.DistanceTo(click_position) > 5){
+			target_position = (click_position - Position).Normalized();
+			velocity = target_position * Speed;
+			Velocity = velocity;
+			MoveAndSlide();
+		}
+		
 	}
 }

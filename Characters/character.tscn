@@ -8,6 +8,7 @@ size = Vector2(42, 27.5)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(0, 1)
+disable_mode = 2
 script = ExtResource("1_gxmgi")
 
 [node name="Icon" type="Sprite2D" parent="."]
