@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://doom44fbdiakf"]
+
+[ext_resource type="PackedScene" uid="uid://b54jc1gruwssq" path="res://Scenes/3d/Player3D.tscn" id="1_o7vnf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_eqjjw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y1tvt"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p4j4q"]
+size = Vector3(10, 1, 10)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+physics_material_override = SubResource("PhysicsMaterial_eqjjw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_y1tvt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_p4j4q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.562704, 0.826658, 0, -0.826658, 0.562704, 0, 4.62534, 3.14487)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.791224, 0.611527, 0, -0.611527, 0.791224, 0, 2.05145, 4.09235)
+fov = 79.8
+
+[node name="CharacterBody3D2" parent="." instance=ExtResource("1_o7vnf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

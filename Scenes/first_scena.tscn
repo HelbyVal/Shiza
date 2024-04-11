@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bws2jpaamsvkl"]
+[gd_scene load_steps=8 format=3 uid="uid://bws2jpaamsvkl"]
 
 [ext_resource type="Script" path="res://Scenes/Scripts/first_scena.cs" id="1_38uot"]
 [ext_resource type="Texture2D" uid="uid://1d26ndkp8oyt" path="res://Scenes/Icons/Scen1.png" id="1_wevpc"]
 [ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="2_fjwjo"]
 [ext_resource type="Texture2D" uid="uid://d4clxuj2e0nth" path="res://Characters/Icons/icon.svg" id="3_1cq1q"]
+[ext_resource type="Script" path="res://Scenes/Button.cs" id="5_6r3fp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikxdj"]
 size = Vector2(128, 128)
@@ -46,3 +47,14 @@ navigation_polygon = SubResource("NavigationPolygon_1bi07")
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_fjwjo")]
 position = Vector2(73, 568)
 scale = Vector2(0.921938, 0.88546)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 164.0
+offset_top = 146.0
+offset_right = 294.0
+offset_bottom = 177.0
+text = "Сменить сцену
+"
+script = ExtResource("5_6r3fp")
+
+[connection signal="pressed" from="Button" to="Button" method="OnPressed"]
