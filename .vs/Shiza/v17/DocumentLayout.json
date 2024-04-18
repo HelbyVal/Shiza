@@ -1,13 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Mikhail\\Documents\\GitHub\\Shiza\\",
+  "WorkspaceRootPath": "C:\\Users\\\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\\Documents\\Godot proj\\Shiza\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E52CAFDC-B686-403A-A688-25D89C419EEF}|Shiza.csproj|c:\\users\\mikhail\\documents\\github\\shiza\\characters\\scripts\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E52CAFDC-B686-403A-A688-25D89C419EEF}|Shiza.csproj|c:\\users\\\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\\documents\\godot proj\\shiza\\scenes\\3d\\player3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E52CAFDC-B686-403A-A688-25D89C419EEF}|Shiza.csproj|solutionrelative:scenes\\3d\\player3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E52CAFDC-B686-403A-A688-25D89C419EEF}|Shiza.csproj|c:\\users\\\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\\documents\\godot proj\\shiza\\characters\\scripts\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E52CAFDC-B686-403A-A688-25D89C419EEF}|Shiza.csproj|solutionrelative:characters\\scripts\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E52CAFDC-B686-403A-A688-25D89C419EEF}|Shiza.csproj|c:\\users\\mikhail\\documents\\github\\shiza\\scenes\\scripts\\first_scena.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E52CAFDC-B686-403A-A688-25D89C419EEF}|Shiza.csproj|C:\\Users\\\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\\Documents\\Godot proj\\Shiza\\scenes\\scripts\\first_scena.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E52CAFDC-B686-403A-A688-25D89C419EEF}|Shiza.csproj|solutionrelative:scenes\\scripts\\first_scena.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -18,15 +22,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{131369f2-062d-44a2-8671-91ff31efb4f4}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Player3D.cs",
+              "DocumentMoniker": "C:\\Users\\\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\\Documents\\Godot proj\\Shiza\\Scenes\\3d\\Player3D.cs",
+              "RelativeDocumentMoniker": "Scenes\\3d\\Player3D.cs",
+              "ToolTip": "C:\\Users\\\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\\Documents\\Godot proj\\Shiza\\Scenes\\3d\\Player3D.cs",
+              "RelativeToolTip": "Scenes\\3d\\Player3D.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-11T11:13:45.555Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "first_scena.cs",
-              "DocumentMoniker": "C:\\Users\\Mikhail\\Documents\\GitHub\\Shiza\\Scenes\\Scripts\\first_scena.cs",
+              "DocumentMoniker": "C:\\Users\\\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\\Documents\\Godot proj\\Shiza\\Scenes\\Scripts\\first_scena.cs",
               "RelativeDocumentMoniker": "Scenes\\Scripts\\first_scena.cs",
-              "ToolTip": "C:\\Users\\Mikhail\\Documents\\GitHub\\Shiza\\Scenes\\Scripts\\first_scena.cs",
+              "ToolTip": "C:\\Users\\\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\\Documents\\Godot proj\\Shiza\\Scenes\\Scripts\\first_scena.cs",
               "RelativeToolTip": "Scenes\\Scripts\\first_scena.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -34,11 +59,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "character.cs",
-              "DocumentMoniker": "C:\\Users\\Mikhail\\Documents\\GitHub\\Shiza\\Characters\\Scripts\\character.cs",
+              "DocumentMoniker": "C:\\Users\\\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\\Documents\\Godot proj\\Shiza\\Characters\\Scripts\\character.cs",
               "RelativeDocumentMoniker": "Characters\\Scripts\\character.cs",
-              "ToolTip": "C:\\Users\\Mikhail\\Documents\\GitHub\\Shiza\\Characters\\Scripts\\character.cs",
+              "ToolTip": "C:\\Users\\\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\\Documents\\Godot proj\\Shiza\\Characters\\Scripts\\character.cs",
               "RelativeToolTip": "Characters\\Scripts\\character.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

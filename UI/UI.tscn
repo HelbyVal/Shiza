@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bki57fbrd1yme"]
+
+[ext_resource type="Texture2D" uid="uid://ko8x6xr13xxb" path="res://UI/UI.png" id="1_0p308"]
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchor_right = 1.67
+anchor_bottom = 1.673
+offset_left = -2.0
+offset_right = -3.84009
+offset_bottom = -4.104
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ui" type="Sprite2D" parent="."]
+position = Vector2(962, 540)
+texture = ExtResource("1_0p308")
