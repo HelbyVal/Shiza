@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://osnyncyewe4o"]
+
+[ext_resource type="PackedScene" uid="uid://c5opgbg42pdvd" path="res://Items/BaseItem.tscn" id="1_4ob4m"]
+[ext_resource type="Texture2D" uid="uid://haar6t6whpf1" path="res://Items/Icons/Rag.png" id="2_12uah"]
+
+[node name="BaseItem" instance=ExtResource("1_4ob4m")]
+
+[node name="Rag" type="Sprite2D" parent="." index="1"]
+position = Vector2(43, 39)
+scale = Vector2(0.895, 0.92)
+texture = ExtResource("2_12uah")

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class first_scena : Node2D
+public partial class BaseItem : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -13,13 +13,13 @@ public partial class first_scena : Node2D
 	{
 	}
 
-	public void OnFloorMouseEntered()
+	public void OnItemMouseEntered()
 	{
-		Global.ChangeMouse("res://Other/Icons/StepCursor.png");
-	}
+        Global.ChangeMouse("res://Other/Icons/ClickCursor.png");
+    } 
 
-    public void OnFloorMouseExited()
-    {
-        Global.ChangeMouse("res://Other/Icons/CommonCursor.png");
+	public void OnItemMouseExited()
+	{
+		Global.ChangeMouse("res://Other/Icons/CommonCursor.png");
     }
 }

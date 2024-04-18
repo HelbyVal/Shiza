@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5opgbg42pdvd"]
+
+[ext_resource type="Script" path="res://Items/Scripts/BaseItem.cs" id="1_imh0u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6fdb"]
+size = Vector2(96.5, 88)
+
+[node name="BaseItem" type="Node2D"]
+script = ExtResource("1_imh0u")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(48.25, 43)
+shape = SubResource("RectangleShape2D_k6fdb")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="OnItemMouseEntered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="OnItemMouseExited"]

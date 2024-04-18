@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bws2jpaamsvkl"]
+[gd_scene load_steps=10 format=3 uid="uid://bws2jpaamsvkl"]
 
 [ext_resource type="Script" path="res://Scenes/Scripts/first_scena.cs" id="1_38uot"]
 [ext_resource type="Texture2D" uid="uid://1d26ndkp8oyt" path="res://Scenes/Icons/Scen1.png" id="1_wevpc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d4clxuj2e0nth" path="res://Characters/Icons/icon.svg" id="3_1cq1q"]
 [ext_resource type="Script" path="res://Scenes/Button.cs" id="5_6r3fp"]
 [ext_resource type="PackedScene" uid="uid://bki57fbrd1yme" path="res://UI/UI.tscn" id="6_s3hup"]
+[ext_resource type="PackedScene" uid="uid://osnyncyewe4o" path="res://Items/Rag.tscn" id="7_8g80b"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1bi07"]
 vertices = PackedVector2Array(613, 768, 612, 768, 760, 757, 929, 800, 1213, 754, 1187, 855, 1331, 832, 1309, 744, 1388, 741, 1529, 764, 1862, 933, 51, 934, 44, 774, 146, 746, 243, 789, 1797, 725, 1877, 757, 401, 807)
@@ -31,19 +32,27 @@ position = Vector2(1002, 566.028)
 scale = Vector2(1.34653, 1.33202)
 polygon = PackedVector2Array(-741.165, 158.386, -655.017, 132.11, -546.59, 168.145, -441.134, 174.902, -329.737, 153.13, -243.589, 141.118, -156.699, 141.118, -112.883, 156.133, -58.6694, 170.397, -11.8825, 159.887, 60.8972, 147.875, 147.787, 130.608, 176.751, 127.605, 148.329, 208.649, 230.764, 191.708, 216.663, 126.206, 282.95, 122.35, 397.804, 144.275, 487.831, 127.335, 574.068, 111.84, 612.686, 125.353, 681.01, 138.866, 686.208, -427.193, -751.562, -430.196)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="Area2D" type="Area2D" parent="StaticBody2D2"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="StaticBody2D2/Area2D"]
 navigation_polygon = SubResource("NavigationPolygon_1bi07")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2/Area2D"]
+polygon = PackedVector2Array(41, 771, 125, 739, 303, 796, 417, 796, 608, 762, 763, 753, 914, 794, 1210, 750, 1189, 851, 1328, 830, 1305, 739, 1529, 757, 1796, 723, 1875, 755, 1862, 925, 52, 935)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(384, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1293, 825)
+position = Vector2(1128, 848)
 shape = SubResource("RectangleShape2D_ikxdj")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(1293, 829)
+position = Vector2(1133, 848)
 texture = ExtResource("3_1cq1q")
+
+[node name="BaseItem" parent="." instance=ExtResource("7_8g80b")]
+position = Vector2(686, 802)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_fjwjo")]
 position = Vector2(151, 893)
@@ -64,4 +73,7 @@ offset_left = -3.0
 offset_right = -3.0
 offset_bottom = 0.0
 
+[connection signal="mouse_entered" from="StaticBody2D2/Area2D" to="." method="OnFloorMouseEntered"]
+[connection signal="mouse_exited" from="StaticBody2D2/Area2D" to="." method="OnFloorMouseExited"]
+[connection signal="mouse_shape_entered" from="StaticBody2D2/Area2D" to="." method="OnFloorMouseShapeEntered"]
 [connection signal="pressed" from="Button" to="Button" method="OnPressed"]
