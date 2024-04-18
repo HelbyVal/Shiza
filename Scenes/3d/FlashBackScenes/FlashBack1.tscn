@@ -1,0 +1,57 @@
+[gd_scene load_steps=12 format=3 uid="uid://cr3b1g17b0b1v"]
+
+[ext_resource type="Texture2D" uid="uid://cf17fklqf1jr5" path="res://Assets/Textures/forrest_ground_01_diff_4k.jpg" id="1_l500x"]
+[ext_resource type="PackedScene" uid="uid://b54jc1gruwssq" path="res://Scenes/3d/Player3d.tscn" id="2_8077v"]
+[ext_resource type="Texture2D" uid="uid://dv5cad0g6jtx" path="res://Assets/Textures/forrest_ground_01_nor_gl_4k.png" id="2_xnkn6"]
+[ext_resource type="Texture2D" uid="uid://dnhyhcdxmue83" path="res://Assets/Textures/forrest_ground_01_rough_4k.jpg" id="3_63a8y"]
+[ext_resource type="Texture2D" uid="uid://drcnxse0b86ae" path="res://Assets/Textures/panorama_image.png" id="5_ylcyk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqrug"]
+albedo_texture = ExtResource("1_l500x")
+roughness_texture = ExtResource("3_63a8y")
+emission = Color(0.764706, 0, 0, 1)
+normal_enabled = true
+normal_texture = ExtResource("2_xnkn6")
+ao_light_affect = 1.0
+heightmap_scale = -6.87
+uv1_scale = Vector3(50, 50, 50)
+point_size = 128.0
+distance_fade_max_distance = 113.9
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pyc5d"]
+material = SubResource("StandardMaterial3D_xqrug")
+size = Vector2(50, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e47rt"]
+data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8vncx"]
+panorama = ExtResource("5_ylcyk")
+
+[sub_resource type="Sky" id="Sky_emhy0"]
+sky_material = SubResource("PanoramaSkyMaterial_8vncx")
+
+[sub_resource type="Environment" id="Environment_2qyfm"]
+background_mode = 2
+sky = SubResource("Sky_emhy0")
+sky_rotation = Vector3(-1.37008, 0, 0)
+
+[node name="FlashBack1" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_pyc5d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_e47rt")
+
+[node name="CharacterBody3D2" parent="." instance=ExtResource("2_8077v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.74818, -0.00739959, 0.663454, -0.663495, -0.00834403, 0.748134, 0, -0.999938, -0.0111524, 25.9915, 19.7331, 0)
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2qyfm")

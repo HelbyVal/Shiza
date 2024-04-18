@@ -24,6 +24,7 @@ public partial class Player3D : CharacterBody3D
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		var Global = GetNode<Global>("/root/Global");
 		mouseSens = Global.MouseSens;
+		GetNode<MeshInstance3D>("BodyMesh").Visible = false;
     }
 
     public override void _UnhandledInput(InputEvent @event)
