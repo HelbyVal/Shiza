@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://doom44fbdiakf"]
+[gd_scene load_steps=7 format=3 uid="uid://doom44fbdiakf"]
 
-[ext_resource type="PackedScene" uid="uid://b54jc1gruwssq" path="res://Scenes/3d/Player3D.tscn" id="1_o7vnf"]
+[ext_resource type="PackedScene" uid="uid://b54jc1gruwssq" path="res://Scenes/3d/Player3d.tscn" id="1_o7vnf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_eqjjw"]
 
@@ -9,6 +9,12 @@ size = Vector3(10, 1, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_p4j4q"]
 size = Vector3(10, 1, 10)
+
+[sub_resource type="PrismMesh" id="PrismMesh_444tt"]
+left_to_right = 2.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u0yeo"]
+points = PackedVector3Array(1.5, 0.5, 0.5, 1.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="Node3D" type="Node3D"]
 
@@ -26,9 +32,19 @@ mesh = SubResource("BoxMesh_p4j4q")
 transform = Transform3D(1, 0, 0, 0, 0.562704, 0.826658, 0, -0.826658, 0.562704, 0, 4.62534, 3.14487)
 shadow_enabled = true
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.791224, 0.611527, 0, -0.611527, 0.791224, 0, 2.05145, 4.09235)
-fov = 79.8
-
 [node name="CharacterBody3D2" parent="." instance=ExtResource("1_o7vnf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MainCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.565444, 6.92349)
+fov = 129.5
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(3.87, 0, 0, 0, 3.87, 0, 0, 0, 3.87, 3.0536, 1.41026, 3.01391)
+mesh = SubResource("PrismMesh_444tt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(3.87, 0, 0, 0, 3.87, 0, 0, 0, 3.87, 3.0536, 1.41026, 3.01391)
+shape = SubResource("ConvexPolygonShape3D_u0yeo")
