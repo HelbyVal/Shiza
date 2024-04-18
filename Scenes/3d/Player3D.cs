@@ -8,7 +8,6 @@ public partial class Player3D : CharacterBody3D
 	public const float JumpVelocity = 4.5f;
 	private float mouseSens;
 	private Camera3D camera;
-	private Camera3D mainCamera;
 
 	private float cameraLimitUp = Godot.Mathf.DegToRad(60);
 	private float cameraLimitDown = Godot.Mathf.DegToRad(-60);
@@ -17,10 +16,8 @@ public partial class Player3D : CharacterBody3D
 
     public override void _Ready()
     {
-        camera = GetNode<Camera3D>("Camera3D");
-		camera.Current = true;
+    	camera = GetNode<Camera3D>("Camera3D");
 		var parent = GetParent();
-		mainCamera = parent.GetNode<Camera3D>("MainCamera");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		var Global = GetNode<Global>("/root/Global");
 		mouseSens = Global.MouseSens;
@@ -53,14 +50,6 @@ public partial class Player3D : CharacterBody3D
 		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
 			velocity.Y = JumpVelocity;
 
-		if(Input.IsActionJustPressed("changeCamera")){
-			if(camera.Current){
-				mainCamera.Current = true;
-			}
-			else{
-				camera.Current = true;
-			}
-		}
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 inputDir = Input.GetVector("moveRight", "moveLeft", "moveBack", "moveForward");

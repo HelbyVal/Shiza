@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cddcbe40cpux7"]
+
+[ext_resource type="PackedScene" path="res://Assets/Models/street_light.glb" id="1_h2gx2"]
+[ext_resource type="Script" path="res://Scripts/StreetLight.cs" id="1_njl1k"]
+
+[node name="StreetLight" type="Node3D"]
+script = ExtResource("1_njl1k")
+
+[node name="street_light2" parent="." instance=ExtResource("1_h2gx2")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4748, -0.0327468)
+light_energy = 6.853
+light_specular = 2.451
+
+[node name="Timer" type="Timer" parent="."]
