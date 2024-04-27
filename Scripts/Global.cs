@@ -1,17 +1,24 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public partial class Global : Node
 {
     public float MouseSens = (float)0.003;
-	public CursorMode ModeCursor 
+	public CursorMode PreviousModeCursor 
 	{
-		get { return modeCursor; }
+		get { return previousModeCursor; }
 	}
-	private CursorMode modeCursor = CursorMode.Common;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    public CursorMode ModeCursor
+    {
+        get { return modeCursor; }
+    }
+    private CursorMode modeCursor = CursorMode.Common;
+    private CursorMode previousModeCursor;
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
         
 	}
@@ -21,9 +28,11 @@ public partial class Global : Node
 	{
 	}
 
-	public static void ChangeMouse(string pathCursor)
+	public void ChangeMouse(CursorMode mode)
 	{
-        var cursor = GD.Load(pathCursor);
+        var cursor = GD.Load(Cursors[mode]);
+		previousModeCursor = modeCursor;
+		modeCursor = mode;
         Input.SetCustomMouseCursor(cursor, Input.CursorShape.Arrow, new Vector2(50,0));
     }
 
@@ -35,6 +44,14 @@ public partial class Global : Node
 		Talk,
 		Inspect
     }
+
+	private Dictionary<CursorMode, string> Cursors = new Dictionary<CursorMode, string>()
+	{
+		{ CursorMode.Common, "res://Other/Icons/CommonCursor.png" },
+		{ CursorMode.Walk, "res://Other/Icons/StepCursor.png" },
+		{ CursorMode.Pickup, "res://Other/Icons/ClickCursor.png" }
+	};
+
 
 }
 

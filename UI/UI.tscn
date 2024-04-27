@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bki57fbrd1yme"]
+[gd_scene load_steps=3 format=3 uid="uid://bki57fbrd1yme"]
 
 [ext_resource type="Texture2D" uid="uid://ko8x6xr13xxb" path="res://UI/UI.png" id="1_0p308"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xlho7"]
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -15,3 +17,16 @@ grow_vertical = 2
 [node name="Ui" type="Sprite2D" parent="."]
 position = Vector2(962, 540)
 texture = ExtResource("1_0p308")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Ui"]
+anchors_preset = -1
+anchor_left = -0.001
+anchor_right = -0.001
+offset_left = -880.08
+offset_top = 414.0
+offset_right = 705.92
+offset_bottom = 541.0
+
+[node name="ItemSlot" type="Panel" parent="Ui/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xlho7")

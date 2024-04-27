@@ -15,11 +15,13 @@ public partial class first_scena : Node2D
 
 	public void OnFloorMouseEntered()
 	{
-		Global.ChangeMouse("res://Other/Icons/StepCursor.png");
+        var Global = GetNode<Global>("/root/Global");
+        Global.ChangeMouse(Global.CursorMode.Walk);
 	}
 
     public void OnFloorMouseExited()
     {
-        Global.ChangeMouse("res://Other/Icons/CommonCursor.png");
+        var Global = GetNode<Global>("/root/Global");
+        Global.ChangeMouse(Global.CursorMode.Common);
     }
 }

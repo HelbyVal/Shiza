@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cddcbe40cpux7"]
 
-[ext_resource type="PackedScene" path="res://Assets/Models/street_light.glb" id="1_h2gx2"]
+[ext_resource type="PackedScene" uid="uid://civeqhxax053n" path="res://Assets/Models/street_light.glb" id="1_h2gx2"]
 [ext_resource type="Script" path="res://Scripts/StreetLight.cs" id="1_njl1k"]
 
 [node name="StreetLight" type="Node3D"]

@@ -15,11 +15,13 @@ public partial class BaseItem : Node2D
 
 	public void OnItemMouseEntered()
 	{
-        Global.ChangeMouse("res://Other/Icons/ClickCursor.png");
+        var Global = GetNode<Global>("/root/Global");
+        Global.ChangeMouse(Global.CursorMode.Pickup);
     } 
 
 	public void OnItemMouseExited()
 	{
-		Global.ChangeMouse("res://Other/Icons/CommonCursor.png");
+        var Global = GetNode<Global>("/root/Global");
+        Global.ChangeMouse(Global.PreviousModeCursor);
     }
 }

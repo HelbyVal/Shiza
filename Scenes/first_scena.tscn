@@ -27,11 +27,6 @@ position = Vector2(960, 540)
 scale = Vector2(1.53723, 1.48148)
 texture = ExtResource("1_wevpc")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
-position = Vector2(1002, 566.028)
-scale = Vector2(1.34653, 1.33202)
-polygon = PackedVector2Array(-741.165, 158.386, -655.017, 132.11, -546.59, 168.145, -441.134, 174.902, -329.737, 153.13, -243.589, 141.118, -156.699, 141.118, -112.883, 156.133, -58.6694, 170.397, -11.8825, 159.887, 60.8972, 147.875, 147.787, 130.608, 176.751, 127.605, 148.329, 208.649, 230.764, 191.708, 216.663, 126.206, 282.95, 122.35, 397.804, 144.275, 487.831, 127.335, 574.068, 111.84, 612.686, 125.353, 681.01, 138.866, 686.208, -427.193, -751.562, -430.196)
-
 [node name="Area2D" type="Area2D" parent="StaticBody2D2"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="StaticBody2D2/Area2D"]
@@ -55,7 +50,7 @@ texture = ExtResource("3_1cq1q")
 position = Vector2(686, 802)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_fjwjo")]
-position = Vector2(151, 893)
+position = Vector2(250, 861)
 scale = Vector2(0.921938, 0.88546)
 
 [node name="Button" type="Button" parent="."]
