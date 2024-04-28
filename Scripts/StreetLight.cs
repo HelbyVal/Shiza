@@ -13,7 +13,7 @@ public partial class StreetLight : Node3D
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override async void _Process(double delta)
+	public override void _Process(double delta)
 	{
 	}
 }

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shiza"
-run/main_scene="res://Scenes/first_scena.tscn"
+run/main_scene="res://Scenes/2d/first_scena.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://Characters/Icons/icon.svg"
 

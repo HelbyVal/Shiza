@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bifdrr85fmia1"]
+
+[ext_resource type="PackedScene" uid="uid://lqcy1ei2eywu" path="res://Assets/Models/Fence/fence.fbx" id="1_jdjlh"]
+
+[node name="Root Scene" instance=ExtResource("1_jdjlh")]

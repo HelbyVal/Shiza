@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2f2eu56wqhgo"]
+
+[ext_resource type="PackedScene" uid="uid://bab8o22n5fpn5" path="res://Assets/Models/Saray/Saray.glb" id="1_x6mig"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1yc1g"]
+
+[node name="Saray" type="StaticBody3D"]
+
+[node name="Saray" parent="." instance=ExtResource("1_x6mig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.79125, 0)
+shape = SubResource("BoxShape3D_1yc1g")
