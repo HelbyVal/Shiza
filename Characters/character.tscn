@@ -71,3 +71,6 @@ debug_enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -25)
 shape = SubResource("RectangleShape2D_5jq1d")
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="AnimationChanged"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="AnimationFinished"]
