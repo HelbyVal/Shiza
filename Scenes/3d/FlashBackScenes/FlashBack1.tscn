@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cr3b1g17b0b1v"]
+[gd_scene load_steps=21 format=3 uid="uid://cr3b1g17b0b1v"]
 
 [ext_resource type="Texture2D" uid="uid://cf17fklqf1jr5" path="res://Assets/Textures/forrest_ground_01_diff_4k.jpg" id="1_l500x"]
 [ext_resource type="Script" path="res://Scenes/3d/FlashBackScenes/FlashBack1.cs" id="1_qgcmx"]
@@ -58,7 +58,15 @@ fog_height = 17.21
 fog_height_density = -0.245
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_le8fm"]
-size = Vector3(1.52037, 1, 1)
+size = Vector3(0.932339, 1, 1)
+
+[sub_resource type="Animation" id="Animation_td3oo"]
+resource_name = "CutScene"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uj4mc"]
+_data = {
+"CutScene": SubResource("Animation_td3oo")
+}
 
 [node name="FlashBack1" type="Node3D"]
 script = ExtResource("1_qgcmx")
@@ -72,7 +80,7 @@ mesh = SubResource("PlaneMesh_pyc5d")
 shape = SubResource("ConcavePolygonShape3D_e47rt")
 
 [node name="CharacterBody3D2" parent="." instance=ExtResource("2_8077v")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 11.7127)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.74818, -0.00739959, 0.663454, -0.663495, -0.00834403, 0.748134, 0, -0.999938, -0.0111524, 25.9915, 19.7331, 0)
@@ -478,12 +486,18 @@ transform = Transform3D(0.787921, 0, -0.0572806, 0, 0.79, 0, 0.0572806, 0, 0.787
 transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -3.11552, 0, -18.4898)
 
 [node name="doneBoss" parent="." instance=ExtResource("11_1man5")]
-transform = Transform3D(-0.994522, 0, -0.104528, 0, 1, 0, 0.104528, 0, -0.994522, -1.98711, -2.38419e-07, -21.6849)
+transform = Transform3D(-0.999506, 0, 0.0314107, 0, 1, 0, -0.0314107, 0, -0.999506, -1.98711, -2.38419e-07, -21.6849)
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.332758, 0, -15.2051)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.332758, 0, -20.1288)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.246364, 0, -0.622194)
 shape = SubResource("BoxShape3D_le8fm")
+
+[node name="CutScene" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uj4mc")
+}
 
 [connection signal="body_entered" from="Area3D" to="." method="OnArea3dBodyEntered"]

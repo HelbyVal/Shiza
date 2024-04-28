@@ -19,8 +19,11 @@ public partial class FlashBack1 : Node3D
 	}
 
 	private void OnArea3dBodyEntered(Node3D body){
-		GD.Print("AAA");
-		//father.RotateX((float)50);// LookAt(body.Position);
-		father.ChangeAnimation("Punch");
+		if(body is Player3D){
+			father.SmoothRotateOn(body);
+			player.SmoothRotateOn(father);
+			player.TurnOffMovement();
+			//GetNode<AnimationPlayer>("CutScene").Play("CutScene");
+		}
 	}
 }
