@@ -14,5 +14,11 @@ script = ExtResource("1_imh0u")
 position = Vector2(48.25, 43)
 shape = SubResource("RectangleShape2D_k6fdb")
 
+[node name="Button" type="Button" parent="."]
+offset_right = 97.0
+offset_bottom = 88.0
+
+[connection signal="body_entered" from="Area2D" to="." method="BodyEntered"]
 [connection signal="mouse_entered" from="Area2D" to="." method="OnItemMouseEntered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="OnItemMouseExited"]
+[connection signal="pressed" from="Button" to="." method="OnPressed"]

@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using System;
 
 public partial class character : CharacterBody2D
@@ -9,6 +9,7 @@ public partial class character : CharacterBody2D
 	Vector2 target_position = new Vector2();
 	AnimatedSprite2D animatedSprite;
 	CharacterAction action = CharacterAction.Idle;
+	BaseItem PickupItem;
 
 
 
@@ -28,8 +29,10 @@ public partial class character : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
 	{
-        //Vector2 velocity = Velocity;
-        var global = GetNode<Global>("/root/Global");
+		if (animatedSprite.Animation.ToString() == "Use")
+			return;
+
+		var global = GetNode<Global>("/root/Global");
         if (Input.IsActionJustPressed("mouse_click") && (global.ModeCursor == Global.CursorMode.Walk || global.ModeCursor == Global.CursorMode.Pickup)){
 			var mousePosition = GetGlobalMousePosition();
 			navigationAgent.TargetPosition = mousePosition;
@@ -60,6 +63,12 @@ public partial class character : CharacterBody2D
             animatedSprite.Play("Idle");
     }
 
+	public void MoveTo(Vector2 position)
+	{
+        GD.Print("MoveTo");
+        navigationAgent.TargetPosition = position;
+	}
+
 	private async void ActorSetup()
     {
         // Wait for the first physics frame so the NavigationServer can sync.
@@ -68,6 +77,32 @@ public partial class character : CharacterBody2D
         // Now that the navigation map is no longer empty, set the movement target.
         navigationAgent.TargetPosition = GlobalPosition;
     }
+
+	public void AnimationFineshed()
+	{
+		if (animatedSprite.Animation.ToString() == "Pickup")
+		{
+			animatedSprite.Play("Idle");
+			if (PickupItem != null)
+			{
+				PickupItem.Pickup();
+			}
+		}
+	}
+
+	public void AnimationChanged()
+	{
+		if (animatedSprite.Animation.ToString() == "Pickup")
+		{
+			animatedSprite.Play("Idle");
+		}
+	}
+
+	public void Pickup(BaseItem item)
+	{
+		PickupItem = item;
+		animatedSprite.Play("Pickup");
+	}
 
 	enum CharacterAction
 	{

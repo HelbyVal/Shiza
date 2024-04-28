@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "Shiza": {
+      "commandName": "Project",
+      "commandLineArgs": "--path. --verbose",
+      "workingDirectory": "C:\\Users\\Пользователь\\Documents\\Godot proj\\Shiza",
+      "nativeDebugging": true
+    },
+    "Debugger": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files (x86)\\Godot_v4.2.1-stable_mono_win64\\Godot_v4.2.1-stable_mono_win64.exe",
+      "commandLineArgs": "--path. \r\n--verbose",
+      "workingDirectory": ".",
+      "nativeDebugging": true
+    }
+  }
+}

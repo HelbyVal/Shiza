@@ -20,19 +20,17 @@ size = Vector2(128, 128)
 [node name="FirstScena" type="Node2D"]
 script = ExtResource("1_38uot")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-
-[node name="Scen1" type="Sprite2D" parent="StaticBody2D2"]
+[node name="Scen1" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 scale = Vector2(1.53723, 1.48148)
 texture = ExtResource("1_wevpc")
 
-[node name="Area2D" type="Area2D" parent="StaticBody2D2"]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="StaticBody2D2/Area2D"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Area2D"]
 navigation_polygon = SubResource("NavigationPolygon_1bi07")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2/Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(41, 771, 125, 739, 303, 796, 417, 796, 608, 762, 763, 753, 914, 794, 1210, 750, 1189, 851, 1328, 830, 1305, 739, 1529, 757, 1796, 723, 1875, 755, 1862, 925, 52, 935)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -64,11 +62,10 @@ script = ExtResource("5_6r3fp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Ui" parent="." instance=ExtResource("6_s3hup")]
-offset_left = -3.0
-offset_right = -3.0
+offset_right = -2.0
 offset_bottom = 0.0
 
-[connection signal="mouse_entered" from="StaticBody2D2/Area2D" to="." method="OnFloorMouseEntered"]
-[connection signal="mouse_exited" from="StaticBody2D2/Area2D" to="." method="OnFloorMouseExited"]
-[connection signal="mouse_shape_entered" from="StaticBody2D2/Area2D" to="." method="OnFloorMouseShapeEntered"]
+[connection signal="mouse_entered" from="Area2D" to="." method="OnFloorMouseEntered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="OnFloorMouseExited"]
+[connection signal="mouse_shape_entered" from="Area2D" to="." method="OnFloorMouseShapeEntered"]
 [connection signal="pressed" from="Button" to="Button" method="OnPressed"]
