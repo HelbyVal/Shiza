@@ -80,11 +80,11 @@ mesh = SubResource("PlaneMesh_pyc5d")
 shape = SubResource("ConcavePolygonShape3D_e47rt")
 
 [node name="CharacterBody3D2" parent="." instance=ExtResource("2_8077v")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-0.6, 0, -9.05975e-08, 0, 0.6, 0, 9.05975e-08, 0, -0.6, 0, 0, 10.9819)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.74818, -0.00739959, 0.663454, -0.663495, -0.00834403, 0.748134, 0, -0.999938, -0.0111524, 25.9915, 19.7331, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.67212, 34.9224, -8.93144)
+light_energy = 0.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2qyfm")
@@ -501,3 +501,5 @@ libraries = {
 }
 
 [connection signal="body_entered" from="Area3D" to="." method="OnArea3dBodyEntered"]
+
+[editable path="CharacterBody3D2"]

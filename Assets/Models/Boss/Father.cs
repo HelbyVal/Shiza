@@ -3,8 +3,10 @@ using System;
 
 public partial class Father : Node3D
 {
+	[Signal]
+	public delegate void RotationFinishedEventHandler();
 	private AnimationPlayer animationPlayer;
-	public const float RotationSpeed = 0.01f;
+	public const float RotationSpeed = 0.02f;
 	// Called when the node enters the scene tree for the first time.
 	private bool isMovementOn = true;
 	private bool isRotation = false;
@@ -37,6 +39,7 @@ public partial class Father : Node3D
 		if(Mathf.Abs(Rotation.Y - degreeTarget) < 0.01)
 		{
 			isRotation = false;
+			EmitSignal(SignalName.RotationFinished);
 		}
 		var y = Mathf.LerpAngle(Rotation.Y, Mathf.Atan2(rotationTargetVector.X, rotationTargetVector.Z), RotationSpeed);
 		Rotation = new Vector3(Rotation.X, y, Rotation.Z);

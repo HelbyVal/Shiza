@@ -3,6 +3,8 @@ using System;
 
 public partial class Player3D : CharacterBody3D
 {
+	 [Signal]
+	 public delegate void RotationFinishedEventHandler();
 	//Приветик
 	public const float Speed = 5.0f;
 	public const float JumpVelocity = 4.5f;
@@ -87,6 +89,7 @@ public partial class Player3D : CharacterBody3D
 		if(Mathf.Abs(Rotation.Y - degreeTarget) < 0.01)
 		{
 			isRotation = false;
+			EmitSignal(SignalName.RotationFinished);
 		}
 		var y = Mathf.LerpAngle(Rotation.Y, Mathf.Atan2(rotationTargetVector.X, rotationTargetVector.Z), RotationSpeed);
 		Rotation = new Vector3(Rotation.X, y, Rotation.Z);

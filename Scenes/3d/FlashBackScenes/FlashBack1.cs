@@ -18,11 +18,13 @@ public partial class FlashBack1 : Node3D
 	{
 	}
 
-	private void OnArea3dBodyEntered(Node3D body){
+	private async void OnArea3dBodyEntered(Node3D body){
 		if(body is Player3D){
 			father.SmoothRotateOn(body);
 			player.SmoothRotateOn(father);
 			player.TurnOffMovement();
+			await ToSignal(player, "RotationFinished");
+			father.ChangeAnimation("Punch");
 			//GetNode<AnimationPlayer>("CutScene").Play("CutScene");
 		}
 	}
