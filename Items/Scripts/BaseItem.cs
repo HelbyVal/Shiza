@@ -32,12 +32,12 @@ public partial class BaseItem : Node2D
 	{
 		if (isDroped)
 		{
-			GD.Print("OnPessed Сработал");
+			GD.Print("OnPessed");
 			var parent = GetParent();
 			if (parent is first_scena)
 			{
 				var scene = (first_scena)parent;
-				var person = scene.GetNode<character>("CharecterBody2D");
+				var person = scene.GetNode<character>("CharacterBody2D");
 				person.MoveTo(this.Position);
 			}
 		}

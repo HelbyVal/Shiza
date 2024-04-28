@@ -1,4 +1,4 @@
-using Godot;
+Ôªøusing Godot;
 using System;
 
 public partial class character : CharacterBody2D
@@ -29,10 +29,10 @@ public partial class character : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
 	{
-//		if (animatedSprite.Animation.ToString() == "Use")
-//			return;
-        
-        var global = GetNode<Global>("/root/Global");
+		if (animatedSprite.Animation.ToString() == "Use")
+			return;
+
+		var global = GetNode<Global>("/root/Global");
         if (Input.IsActionJustPressed("mouse_click") && (global.ModeCursor == Global.CursorMode.Walk || global.ModeCursor == Global.CursorMode.Pickup)){
 			var mousePosition = GetGlobalMousePosition();
 			navigationAgent.TargetPosition = mousePosition;
@@ -65,8 +65,8 @@ public partial class character : CharacterBody2D
 
 	public void MoveTo(Vector2 position)
 	{
-//        GD.Print("MoveTo —‡·ÓÚ‡Î");
-//        target_position = position;
+        GD.Print("MoveTo");
+        navigationAgent.TargetPosition = position;
 	}
 
 	private async void ActorSetup()
@@ -80,28 +80,28 @@ public partial class character : CharacterBody2D
 
 	public void AnimationFineshed()
 	{
-		//if(animatedSprite.Animation.ToString() == "Pickup")
-		//{
-		//	animatedSprite.Play("Idle");
-		//	if (PickupItem != null)
-		//	{
-		//		PickupItem.Pickup();
-		//	}
-		//}
+		if (animatedSprite.Animation.ToString() == "Pickup")
+		{
+			animatedSprite.Play("Idle");
+			if (PickupItem != null)
+			{
+				PickupItem.Pickup();
+			}
+		}
 	}
 
 	public void AnimationChanged()
 	{
-		//if(animatedSprite.Animation.ToString() == "Pickup")
-		//{
-		//	animatedSprite.Play("Idle");
-		//}
+		if (animatedSprite.Animation.ToString() == "Pickup")
+		{
+			animatedSprite.Play("Idle");
+		}
 	}
 
 	public void Pickup(BaseItem item)
 	{
-		//PickupItem = item;
-		//animatedSprite.Play("Pickup");
+		PickupItem = item;
+		animatedSprite.Play("Pickup");
 	}
 
 	enum CharacterAction

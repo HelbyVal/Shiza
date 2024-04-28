@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cl4ipq27x8dta"]
+[gd_scene load_steps=18 format=3 uid="uid://cl4ipq27x8dta"]
 
 [ext_resource type="Script" path="res://Characters/Scripts/character.cs" id="1_gxmgi"]
 [ext_resource type="Texture2D" uid="uid://byej5bhovjxpd" path="res://Characters/Animation/MainCharacter/Idle/Idle1.png" id="2_xqtpc"]
@@ -7,30 +7,55 @@
 [ext_resource type="Texture2D" uid="uid://b1qqdvb6q4r60" path="res://Characters/Animation/MainCharacter/Idle/Idle4.png" id="5_je66v"]
 [ext_resource type="Texture2D" uid="uid://dlx2po1vcfcr8" path="res://Characters/Animation/MainCharacter/Idle/Idle5.png" id="6_kgsii"]
 [ext_resource type="Texture2D" uid="uid://cbolklfnq5vn" path="res://Characters/Animation/MainCharacter/Walk/Walk1.png" id="7_b2vyc"]
+[ext_resource type="Texture2D" uid="uid://ck80m32i08wvs" path="res://Characters/Animation/MainCharacter/IdleHat/IdleHat1.png" id="7_wtxlk"]
 [ext_resource type="Texture2D" uid="uid://63ov4d1bonh0" path="res://Characters/Animation/MainCharacter/Walk/Walk2.png" id="8_8264m"]
+[ext_resource type="Texture2D" uid="uid://cfcvv7w4k3ips" path="res://Characters/Animation/MainCharacter/IdleHat/IdleHat2.png" id="8_kxaj2"]
 [ext_resource type="Texture2D" uid="uid://xcfbbfll1v3v" path="res://Characters/Animation/MainCharacter/Walk/Walk3.png" id="9_b316h"]
+[ext_resource type="Texture2D" uid="uid://coqn3v004djrw" path="res://Characters/Animation/MainCharacter/IdleHat/IdleHat3.png" id="9_tadkr"]
 [ext_resource type="Texture2D" uid="uid://c8avd26eo4rk0" path="res://Characters/Animation/MainCharacter/Walk/Walk4.png" id="10_7ephe"]
+[ext_resource type="Texture2D" uid="uid://dapspm0bbpt0p" path="res://Characters/Animation/MainCharacter/IdleHat/IdleHat4.png" id="10_v03vb"]
+[ext_resource type="Texture2D" uid="uid://v1uph52mvbni" path="res://Characters/Animation/MainCharacter/IdleHat/IdleHat5.png" id="11_uyywg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hwmk1"]
 animations = [{
 "frames": [{
-"duration": 2.0,
+"duration": 1.5,
 "texture": ExtResource("2_xqtpc")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("3_wqnow")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("4_1acwh")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("5_je66v")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("6_kgsii")
 }],
 "loop": true,
 "name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("7_wtxlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kxaj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tadkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_v03vb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uyywg")
+}],
+"loop": true,
+"name": &"Pickup",
 "speed": 5.0
 }, {
 "frames": [{
@@ -62,8 +87,7 @@ script = ExtResource("1_gxmgi")
 position = Vector2(-5, -133)
 scale = Vector2(1.575, 1.575)
 sprite_frames = SubResource("SpriteFrames_hwmk1")
-animation = &"Idle"
-frame_progress = 0.0546775
+animation = &"Pickup"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
