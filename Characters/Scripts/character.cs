@@ -9,7 +9,10 @@ public partial class character : CharacterBody2D
 	Vector2 target_position = new Vector2();
 	AnimatedSprite2D animatedSprite;
 	CharacterAction action = CharacterAction.Idle;
-	BaseItem PickupItem;
+    CharacterAction previousAction = CharacterAction.Idle;
+    BaseItem PickupItem;
+	public bool Picking { get { return picking; } }
+	bool picking = false;
 
 
 
@@ -29,11 +32,13 @@ public partial class character : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
 	{
-		if (animatedSprite.Animation.ToString() == "Use")
+		if (action == CharacterAction.Pickup)
+		{
 			return;
+		}
 
 		var global = GetNode<Global>("/root/Global");
-        if (Input.IsActionJustPressed("mouse_click") && (global.ModeCursor == Global.CursorMode.Walk || global.ModeCursor == Global.CursorMode.Pickup)){
+        if (Input.IsActionJustPressed("mouse_click") && (global.ModeCursor == Global.CursorMode.Walk)){
 			var mousePosition = GetGlobalMousePosition();
 			navigationAgent.TargetPosition = mousePosition;
 		}
@@ -45,14 +50,15 @@ public partial class character : CharacterBody2D
 			Velocity = velocity;
 			if (Velocity.X > 0)
 			{
-				animatedSprite.Play("Walk");
+                ChangeAnimation(CharacterAction.Walk);
+                action = CharacterAction.Walk;
 				if (!animatedSprite.FlipH)
 					animatedSprite.FlipH = true;
 			}
 			else
 			{
-				animatedSprite.Play("Walk");
-				if (animatedSprite.FlipH)
+                ChangeAnimation(CharacterAction.Walk);
+                if (animatedSprite.FlipH)
 					animatedSprite.FlipH = false;
 			}
 
@@ -60,13 +66,17 @@ public partial class character : CharacterBody2D
 			MoveAndSlide();
 		}
 		else
-            animatedSprite.Play("Idle");
+		{
+            ChangeAnimation(CharacterAction.Idle);
+            action = CharacterAction.Idle;
+        }
     }
 
 	public void MoveTo(Vector2 position)
 	{
         GD.Print("MoveTo");
         navigationAgent.TargetPosition = position;
+		picking = true;
 	}
 
 	private async void ActorSetup()
@@ -80,34 +90,53 @@ public partial class character : CharacterBody2D
 
 	public void AnimationFineshed()
 	{
-		if (animatedSprite.Animation.ToString() == "Pickup")
+		if (previousAction == CharacterAction.Pickup)
 		{
-			animatedSprite.Play("Idle");
+			
 			if (PickupItem != null)
 			{
 				PickupItem.Pickup();
 			}
+			ChangeAnimation(CharacterAction.Idle);
+			picking = false;
 		}
 	}
 
 	public void AnimationChanged()
 	{
-		if (animatedSprite.Animation.ToString() == "Pickup")
-		{
-			animatedSprite.Play("Idle");
-		}
 	}
 
 	public void Pickup(BaseItem item)
 	{
 		PickupItem = item;
-		animatedSprite.Play("Pickup");
-	}
+        ChangeAnimation(CharacterAction.Pickup);
+    }
 
-	enum CharacterAction
+	public void ChangeAnimation(CharacterAction act)
+	{
+		previousAction = action;
+		action = act;
+        animatedSprite.Play(act.ToString());
+    }
+
+	public enum CharacterAction
 	{
 		Idle,
-		Walk	
+		Walk,
+		Pickup
 	}
 
+	public void FrameChanged()
+	{
+		if (action == CharacterAction.Pickup && animatedSprite.Frame == 5)
+		{
+            if (PickupItem != null)
+            {
+                PickupItem.Pickup();
+            }
+            ChangeAnimation(CharacterAction.Idle);
+            picking = false;
+			PickupItem = null;
+        }
+	}
 }

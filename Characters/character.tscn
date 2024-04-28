@@ -53,6 +53,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("11_uyywg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uyywg")
 }],
 "loop": true,
 "name": &"Pickup",
@@ -98,3 +101,4 @@ shape = SubResource("RectangleShape2D_5jq1d")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="AnimationChanged"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="AnimationFinished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="FrameChanged"]

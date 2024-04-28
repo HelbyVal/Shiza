@@ -28,28 +28,16 @@ public partial class BaseItem : Node2D
         Global.ChangeMouse(Global.PreviousModeCursor);
     }
 
-	public void OnPressed()
-	{
-		if (isDroped)
-		{
-			GD.Print("OnPessed");
-			var parent = GetParent();
-			if (parent is first_scena)
-			{
-				var scene = (first_scena)parent;
-				var person = scene.GetNode<character>("CharacterBody2D");
-				person.MoveTo(this.Position);
-			}
-		}
-	}
-
 	public void BodyEntered(Node2D body)
 	{
 		if (body is character)
 		{
 			var player = (character)body;
-			player.MoveTo(player.Position);
-			player.Pickup(this);
+			if (player.Picking)
+			{
+				player.MoveTo(player.Position);
+				player.Pickup(this);
+			}
 		}
 	}
 
@@ -57,4 +45,22 @@ public partial class BaseItem : Node2D
 	{
 
 	}
+
+	public void ClickInputEvent(Node veiwport, InputEvent e, int shape_idx) 
+	{
+		if (e.IsActionPressed("mouse_click"))
+		{
+			if (isDroped)
+			{
+				GD.Print("OnPessed");
+				var parent = GetParent();
+				if (parent is first_scena)
+				{
+					var scene = (first_scena)parent;
+					var person = scene.GetNode<character>("CharacterBody2D");
+					person.MoveTo(this.Position);
+				}
+			}
+		}
+	} 
 }
