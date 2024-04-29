@@ -1,31 +1,41 @@
-using Godot;
+﻿using Godot;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 
 public partial class FlashBack1 : Node3D
 {
-	Father father;
-	Player3D player;
-	// Called when the node enters the scene tree for the first time.
+	private Father _father;
+	private Player3D _player;
+	private dialog_ui _dialog;
 	public override void _Ready()
 	{
-		father = GetNode<Father>("doneBoss");
-		father.ChangeAnimation("Talk");
-		player = GetNode<Player3D>("CharacterBody3D2");
-	}
+		_father = GetNode<Father>("doneBoss");
+		_father.ChangeAnimation("Talk");
+		_player = GetNode<Player3D>("CharacterBody3D2");
+		_dialog = GetNode<dialog_ui>("DialogUI");
+    }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+
 	}
 
 	private async void OnArea3dBodyEntered(Node3D body){
 		if(body is Player3D){
-			father.SmoothRotateOn(body);
-			player.SmoothRotateOn(father);
-			player.TurnOffMovement();
-			await ToSignal(player, "RotationFinished");
-			father.ChangeAnimation("Punch");
-			//GetNode<AnimationPlayer>("CutScene").Play("CutScene");
+			_father.SmoothRotateOn(body);
+			_player.SmoothRotateOn(_father);
+			_player.TurnOffMovement();
+			_player.SmoothRotateCameraOnDegree(9);
+			await ToSignal(_player, "RotationFinished");
+
+			_dialog.StartDialog();
+			await ToSignal(_dialog, "DialogFinished");
+
+			_father.ChangeAnimation("Punch");
 		}
 	}
 }

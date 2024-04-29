@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cr3b1g17b0b1v"]
+[gd_scene load_steps=22 format=3 uid="uid://cr3b1g17b0b1v"]
 
 [ext_resource type="Texture2D" uid="uid://cf17fklqf1jr5" path="res://Assets/Textures/forrest_ground_01_diff_4k.jpg" id="1_l500x"]
 [ext_resource type="Script" path="res://Scenes/3d/FlashBackScenes/FlashBack1.cs" id="1_qgcmx"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b0bua1bdyxam3" path="res://Assets/Models/Tree/tree.tscn" id="8_hctiv"]
 [ext_resource type="PackedScene" uid="uid://cddcbe40cpux7" path="res://Assets/Models/StreetLight/street_light.tscn" id="9_vjmel"]
 [ext_resource type="PackedScene" uid="uid://d04k2rkf5ltkk" path="res://Assets/Models/Boss/Father.tscn" id="11_1man5"]
+[ext_resource type="PackedScene" uid="uid://dbun81il8jmoq" path="res://UI/dialog_ui.tscn" id="12_iehro"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqrug"]
 albedo_texture = ExtResource("1_l500x")
@@ -80,7 +81,7 @@ mesh = SubResource("PlaneMesh_pyc5d")
 shape = SubResource("ConcavePolygonShape3D_e47rt")
 
 [node name="CharacterBody3D2" parent="." instance=ExtResource("2_8077v")]
-transform = Transform3D(-0.6, 0, -9.05975e-08, 0, 0.6, 0, 9.05975e-08, 0, -0.6, 0, 0, 10.9819)
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 10.9819)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.67212, 34.9224, -8.93144)
@@ -499,6 +500,9 @@ shape = SubResource("BoxShape3D_le8fm")
 libraries = {
 "": SubResource("AnimationLibrary_uj4mc")
 }
+
+[node name="DialogUI" parent="." instance=ExtResource("12_iehro")]
+DialogPath = "res://dialog.txt"
 
 [connection signal="body_entered" from="Area3D" to="." method="OnArea3dBodyEntered"]
 
