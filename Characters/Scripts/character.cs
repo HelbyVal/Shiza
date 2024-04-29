@@ -4,7 +4,9 @@ using System;
 public partial class character : CharacterBody2D
 {
 	private NavigationAgent2D navigationAgent;
-	public const float Speed = 300.0f;
+	private CollisionShape2D collisionShape;
+	public const float Speed = 250.0f;
+	public const float ChangeScale = 0.01f;
 	Vector2 click_position = new Vector2();
 	Vector2 target_position = new Vector2();
 	AnimatedSprite2D animatedSprite;
@@ -18,6 +20,7 @@ public partial class character : CharacterBody2D
 
 	public override void _Ready()
     {
+		collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
         animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
         click_position = Position;
@@ -43,11 +46,23 @@ public partial class character : CharacterBody2D
 			navigationAgent.TargetPosition = mousePosition;
 		}
 
-		if (GlobalPosition.DistanceTo(navigationAgent.TargetPosition) > 5)
+		if (GlobalPosition.DistanceTo(navigationAgent.TargetPosition) > 15)
 		{
 			Vector2 nextPathPosition = navigationAgent.GetNextPathPosition();
 			var velocity = (nextPathPosition - GlobalPosition).Normalized() * Speed;
 			Velocity = velocity;
+
+			if (velocity.Y > 0)
+			{
+				animatedSprite.Scale = animatedSprite.Scale + (new Vector2(ChangeScale, ChangeScale) * velocity.Abs().Y/Speed);
+				collisionShape.Scale = collisionShape.Scale + (new Vector2(ChangeScale, ChangeScale) * velocity.Abs().Y/Speed);
+            }
+			else
+			{
+                animatedSprite.Scale = animatedSprite.Scale - (new Vector2(ChangeScale, ChangeScale) * velocity.Abs().Y/Speed);
+                collisionShape.Scale = collisionShape.Scale - (new Vector2(ChangeScale, ChangeScale) * velocity.Abs().Y/Speed);
+            }
+
 			if (Velocity.X > 0)
 			{
                 ChangeAnimation(CharacterAction.Walk);

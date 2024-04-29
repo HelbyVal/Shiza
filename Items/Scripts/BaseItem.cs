@@ -5,11 +5,13 @@ public partial class BaseItem : Node2D
 {
 	public bool IsDroped { get { return isDroped; } }
 	private bool isDroped = true;
+	Global Global;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-	}
+        Global = GetNode<Global>("/root/Global");
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -18,19 +20,17 @@ public partial class BaseItem : Node2D
 
 	public void OnItemMouseEntered()
 	{
-        var Global = GetNode<Global>("/root/Global");
         Global.ChangeMouse(Global.CursorMode.Pickup);
     } 
 
 	public void OnItemMouseExited()
 	{
-        var Global = GetNode<Global>("/root/Global");
         Global.ChangeMouse(Global.PreviousModeCursor);
     }
 
 	public void BodyEntered(Node2D body)
 	{
-		if (body is character)
+		if (body is character && isDroped)
 		{
 			var player = (character)body;
 			if (player.Picking)
@@ -43,7 +43,13 @@ public partial class BaseItem : Node2D
 
 	public void Pickup()
 	{
-
+		var parent = (first_scena)GetParent();
+		UI ui = parent.GetNode<UI>("Ui");
+		if (ui.InsertItem(this)) {
+			isDroped = false;
+            Global.ChangeMouse(Global.PreviousModeCursor);
+			DeleteOnScene(ui);
+        }
 	}
 
 	public void ClickInputEvent(Node veiwport, InputEvent e, int shape_idx) 
@@ -52,7 +58,6 @@ public partial class BaseItem : Node2D
 		{
 			if (isDroped)
 			{
-				GD.Print("OnPessed");
 				var parent = GetParent();
 				if (parent is first_scena)
 				{
@@ -62,5 +67,12 @@ public partial class BaseItem : Node2D
 				}
 			}
 		}
-	} 
+	}
+	
+	public void DeleteOnScene(Node newParent)
+	{
+		var parent = GetParent();
+		parent.RemoveChild(this);
+		newParent.AddChild(this);
+	}
 }

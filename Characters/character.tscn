@@ -80,14 +80,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jq1d"]
-size = Vector2(64, 44.875)
+size = Vector2(74, 180.719)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(0, 1)
 script = ExtResource("1_gxmgi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-5, -133)
+position = Vector2(0, -100)
 scale = Vector2(1.575, 1.575)
 sprite_frames = SubResource("SpriteFrames_hwmk1")
 animation = &"Pickup"
@@ -96,7 +96,7 @@ animation = &"Pickup"
 debug_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -25)
+position = Vector2(4, -57.6406)
 shape = SubResource("RectangleShape2D_5jq1d")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="AnimationChanged"]
