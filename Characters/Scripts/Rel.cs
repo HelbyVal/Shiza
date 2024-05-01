@@ -19,4 +19,8 @@ public partial class Rel : Node2D
 		
 		//MoveAndSlide();
 	}
+
+    public Dialog GetCurrentDialog(){
+        return GetNode<Dialog>("StartDialog");
+    }
 }

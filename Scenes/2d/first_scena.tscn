@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://clf5hxmx04qsw" path="res://Scenes/2d/Icons/City.png" id="2_deh76"]
 [ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="2_fjwjo"]
 [ext_resource type="PackedScene" uid="uid://cobusxbevqwqo" path="res://Characters/Rel.tscn" id="4_oen0x"]
-[ext_resource type="Script" path="res://Scenes/2d/Button.cs" id="5_6r3fp"]
 [ext_resource type="PackedScene" uid="uid://osnyncyewe4o" path="res://Items/Rag.tscn" id="7_8g80b"]
+[ext_resource type="PackedScene" uid="uid://dbun81il8jmoq" path="res://UI/dialog_ui.tscn" id="7_fl0tt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7y6c"]
 size = Vector2(79, 707)
@@ -51,15 +51,9 @@ scale = Vector2(0.707437, 0.707437)
 position = Vector2(462, 814)
 scale = Vector2(0.921938, 0.88546)
 
-[node name="Button" type="Button" parent="."]
-offset_left = 164.0
-offset_top = 146.0
-offset_right = 294.0
-offset_bottom = 177.0
-text = "Сменить сцену
-"
-script = ExtResource("5_6r3fp")
-metadata/_edit_use_anchors_ = true
+[node name="DialogUI" parent="." instance=ExtResource("7_fl0tt")]
+offset_top = -678.0
+offset_bottom = -678.0
 
 [connection signal="body_entered" from="SideStreetWay" to="." method="PlayerEnterOnStreetWay"]
 [connection signal="input_event" from="SideStreetWay" to="." method="ClickOnStreetWay"]
@@ -67,4 +61,8 @@ metadata/_edit_use_anchors_ = true
 [connection signal="mouse_entered" from="Area2D" to="." method="OnFloorMouseEntered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="OnFloorMouseExited"]
 [connection signal="mouse_shape_entered" from="Area2D" to="." method="OnFloorMouseShapeEntered"]
-[connection signal="pressed" from="Button" to="Button" method="OnPressed"]
+[connection signal="input_event" from="Rel/Area2D" to="." method="OnTaylerClickEvent"]
+[connection signal="DialogFinished" from="DialogUI" to="." method="OnDialogFinished"]
+[connection signal="DialogStarted" from="DialogUI" to="." method="OnDialogStarted"]
+
+[editable path="Rel"]

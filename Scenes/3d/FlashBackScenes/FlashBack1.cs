@@ -35,7 +35,7 @@ public partial class FlashBack1 : Node3D
 
 			GetNode<AudioStreamPlayer3D>("Mumbling").Stop();
 
-			_dialog.StartDialog();
+			_dialog.StartDialog(GetNode<Dialog>("Dialog"));
 			await ToSignal(_dialog, "DialogFinished");
 
 			_father.ChangeAnimation("Punch");

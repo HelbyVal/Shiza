@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://cr3b1g17b0b1v"]
+[gd_scene load_steps=67 format=3 uid="uid://cr3b1g17b0b1v"]
 
 [ext_resource type="Texture2D" uid="uid://cf17fklqf1jr5" path="res://Assets/Textures/forrest_ground_01_diff_4k.jpg" id="1_l500x"]
 [ext_resource type="Script" path="res://Scenes/3d/FlashBackScenes/FlashBack1.cs" id="1_qgcmx"]
@@ -45,6 +45,7 @@
 [ext_resource type="AudioStream" uid="uid://c81ajiqqe2ksc" path="res://Assets/Audio/MumblingShort.mp3" id="42_pvofx"]
 [ext_resource type="AudioStream" uid="uid://mrr15xjpxekj" path="res://Assets/Audio/night-sounds.mp3" id="44_yh2ms"]
 [ext_resource type="PackedScene" uid="uid://d3lstmcj0a5wn" path="res://UI/EndGame.tscn" id="45_rx5gy"]
+[ext_resource type="Script" path="res://Dialogs/Dialog.cs" id="46_pdb1m"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r4xoa"]
 radius = 1.33
@@ -68,7 +69,7 @@ size = Vector2(200, 300)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e47rt"]
 data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
 
-[sub_resource type="Resource" id="Resource_7cmkk"]
+[sub_resource type="Resource" id="Resource_rhxq7"]
 script = ExtResource("14_p58f2")
 amount = 1100
 enabled = true
@@ -77,7 +78,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_ql2vv"]
+[sub_resource type="Resource" id="Resource_wu7wj"]
 script = ExtResource("15_f5luw")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(0, 0, 0)
@@ -88,7 +89,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_2bhqm"]
+[sub_resource type="Resource" id="Resource_jlvi4"]
 script = ExtResource("16_61tyk")
 iterations = 3
 offset_step = 0.2
@@ -100,7 +101,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_iyhpp"]
+[sub_resource type="Resource" id="Resource_s26ge"]
 script = ExtResource("17_ve1c0")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -116,7 +117,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_d3e1y"]
+[sub_resource type="Resource" id="Resource_1j1yn"]
 script = ExtResource("18_c1td1")
 operation = 0
 rotation = Vector3(-90, 0, 0)
@@ -126,9 +127,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_j007u"]
+[sub_resource type="Resource" id="Resource_vn6wm"]
 script = ExtResource("13_k4gbh")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_7cmkk"), SubResource("Resource_ql2vv"), SubResource("Resource_2bhqm"), SubResource("Resource_iyhpp"), SubResource("Resource_d3e1y")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_rhxq7"), SubResource("Resource_wu7wj"), SubResource("Resource_jlvi4"), SubResource("Resource_s26ge"), SubResource("Resource_1j1yn")])
 
 [sub_resource type="Resource" id="Resource_ajo43"]
 script = ExtResource("21_2pbhd")
@@ -915,7 +916,7 @@ shape = SubResource("ConcavePolygonShape3D_e47rt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.10809, 0)
 script = ExtResource("12_mhw1q")
 enabled = false
-modifier_stack = SubResource("Resource_j007u")
+modifier_stack = SubResource("Resource_vn6wm")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -954,7 +955,6 @@ shape = SubResource("Resource_5migv")
 environment = SubResource("Environment_2qyfm")
 
 [node name="DialogUI" parent="." instance=ExtResource("12_iehro")]
-DialogPath = "res://dialog.txt"
 
 [node name="Chair" parent="." instance=ExtResource("15_3fx87")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.25553, 0.0457308, -25.5918)
@@ -1129,6 +1129,10 @@ autoplay = true
 
 [node name="EndGame" parent="." instance=ExtResource("45_rx5gy")]
 visible = false
+
+[node name="Dialog" type="Node" parent="."]
+script = ExtResource("46_pdb1m")
+DialogPath = "res://Dialogs/3d/1FlashBack/FatherDialog.txt"
 
 [connection signal="body_entered" from="CutScenaTrigger" to="." method="OnArea3dBodyEntered"]
 [connection signal="animation_finished" from="Father/AnimationPlayer" to="." method="OnAnimationFatherFinished"]

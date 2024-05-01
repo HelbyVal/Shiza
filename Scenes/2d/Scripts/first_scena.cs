@@ -6,6 +6,7 @@ public partial class first_scena : Node2D, IChar
 {
     Global Global;
     character Player;
+    private dialog_ui _dialogUI;
     public const float speedScaling = 0.007f;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -13,6 +14,7 @@ public partial class first_scena : Node2D, IChar
         Global = GetNode<Global>("/root/Global");
         Player = GetNode<character>("CharacterBody2D");
         Player.ChangeScale = speedScaling;
+        _dialogUI = GetNode<dialog_ui>("DialogUI");
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -70,5 +72,21 @@ public partial class first_scena : Node2D, IChar
         player.GlobalPosition = pos;
         player.Scale = scale;
         player.MoveToWay(pos);
+    }
+
+    private void OnTaylerClickEvent(Node viewport, InputEvent @event, int shape_idx){
+        if (@event.IsActionPressed("mouse_click"))
+        {
+            _dialogUI.StartDialog(GetNode<Rel>("Rel").GetCurrentDialog());
+            Player.DisableMovement();
+        }
+    }
+
+    private void OnDialogStarted(){
+        Player.DisableMovement();
+    }
+
+    private void OnDialogFinished(){
+        Player.EnableMovement();
     }
 }

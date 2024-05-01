@@ -16,6 +16,7 @@ public partial class character : CharacterBody2D
     BaseItem PickupItem;
 	public bool Picking { get { return picking; } }
 	bool picking = false;
+	bool isMovementOn = true;
 
 
 
@@ -36,6 +37,10 @@ public partial class character : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
 	{
+		if(!isMovementOn){
+			return;
+		}
+
 		if (action == CharacterAction.Pickup)
 		{
 			return;
@@ -147,5 +152,13 @@ public partial class character : CharacterBody2D
             picking = false;
 			PickupItem = null;
         }
+	}
+
+	public void DisableMovement(){
+		isMovementOn = false;
+	}
+
+	public void EnableMovement(){
+		isMovementOn = true;
 	}
 }
