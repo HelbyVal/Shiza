@@ -137,7 +137,7 @@ public partial class character : CharacterBody2D
 
 	public void FrameChanged()
 	{
-		if (action == CharacterAction.Pickup && animatedSprite.Frame == 5)
+		if (action == CharacterAction.Pickup && animatedSprite.Frame == 7)
 		{
             if (PickupItem != null)
             {

@@ -1,16 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://74eunirr0u47"]
+[gd_scene load_steps=7 format=3 uid="uid://74eunirr0u47"]
 
 [ext_resource type="Script" path="res://Scenes/2d/Scripts/SarayWay.cs" id="1_6xfx7"]
 [ext_resource type="Texture2D" uid="uid://cfdisftchy5xf" path="res://Scenes/2d/Icons/SarayWay.png" id="2_ihqsv"]
 [ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="3_3e6fc"]
+[ext_resource type="PackedScene" uid="uid://dtu5e2i6pi72m" path="res://Characters/OldMan.tscn" id="4_5utv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lh2p"]
 size = Vector2(65.125, 381.625)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3g606"]
-vertices = PackedVector2Array(1048, 643, 1332, 652, 1696, 860, 94, 884, 115, 636, 482, 631)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(106, 627, 84, 895, 1734, 870, 1336, 643, 1048, 633, 482, 621)])
+vertices = PackedVector2Array(482, 631, 1048, 643, 1047, 643, 1661, 849, 94, 884, 115, 636, 1384, 783, 1502, 783, 1512, 764, 1245, 663, 1312, 729, 1313, 730)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 0, 6), PackedInt32Array(7, 8, 3), PackedInt32Array(2, 9, 10, 11), PackedInt32Array(6, 7, 3), PackedInt32Array(6, 0, 2, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(106, 627, 84, 895, 1698.4, 858.588, 1508.79, 751.265, 1495.61, 773.331, 1387.11, 773.331, 1319.18, 722.177, 1250.23, 653.972, 1048, 633, 482, 621)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="SarayWay" type="Node2D"]
@@ -19,6 +20,9 @@ script = ExtResource("1_6xfx7")
 [node name="SarayWay" type="Sprite2D" parent="."]
 position = Vector2(966, 526)
 texture = ExtResource("2_ihqsv")
+
+[node name="OldMan" parent="." instance=ExtResource("4_5utv2")]
+position = Vector2(1417, 754)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_3e6fc")]
 position = Vector2(186, 742)
@@ -33,10 +37,13 @@ debug_color = Color(0.968627, 0.160784, 0.203922, 0.419608)
 [node name="AreaFloor" type="Area2D" parent="."]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="AreaFloor"]
+scale = Vector2(0.986221, 0.996985)
 navigation_polygon = SubResource("NavigationPolygon_3g606")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AreaFloor"]
-polygon = PackedVector2Array(110, 631, 510, 633, 992, 641, 1334, 651, 1696, 861, 98, 882)
+position = Vector2(4, 5)
+scale = Vector2(0.950646, 1)
+polygon = PackedVector2Array(110, 631, 510, 633, 992, 641, 1372.75, 645, 1717.78, 843, 98, 882)
 
 [connection signal="body_entered" from="CrossCityArea" to="." method="PlayerEnterOnCrossCity"]
 [connection signal="input_event" from="CrossCityArea" to="." method="ClickOnCrossCity"]

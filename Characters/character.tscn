@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cl4ipq27x8dta"]
+[gd_scene load_steps=20 format=3 uid="uid://cl4ipq27x8dta"]
 
 [ext_resource type="Script" path="res://Characters/Scripts/character.cs" id="1_gxmgi"]
 [ext_resource type="Texture2D" uid="uid://byej5bhovjxpd" path="res://Characters/Animation/MainCharacter/Idle/Idle1.png" id="2_xqtpc"]
@@ -6,15 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://dfrt8g5sopc2a" path="res://Characters/Animation/MainCharacter/Idle/Idle3.png" id="4_1acwh"]
 [ext_resource type="Texture2D" uid="uid://b1qqdvb6q4r60" path="res://Characters/Animation/MainCharacter/Idle/Idle4.png" id="5_je66v"]
 [ext_resource type="Texture2D" uid="uid://dlx2po1vcfcr8" path="res://Characters/Animation/MainCharacter/Idle/Idle5.png" id="6_kgsii"]
+[ext_resource type="Texture2D" uid="uid://duojddrwvmjth" path="res://Characters/Animation/MainCharacter/Pickup/дет берет1.png" id="7_0y6s8"]
 [ext_resource type="Texture2D" uid="uid://cbolklfnq5vn" path="res://Characters/Animation/MainCharacter/Walk/Walk1.png" id="7_b2vyc"]
-[ext_resource type="Texture2D" uid="uid://ck80m32i08wvs" path="res://Characters/Animation/MainCharacter/IdleHat/IdleHat1.png" id="7_wtxlk"]
 [ext_resource type="Texture2D" uid="uid://63ov4d1bonh0" path="res://Characters/Animation/MainCharacter/Walk/Walk2.png" id="8_8264m"]
-[ext_resource type="Texture2D" uid="uid://cfcvv7w4k3ips" path="res://Characters/Animation/MainCharacter/IdleHat/IdleHat2.png" id="8_kxaj2"]
+[ext_resource type="Texture2D" uid="uid://ewaggbkexte7" path="res://Characters/Animation/MainCharacter/Pickup/дет берет2.png" id="8_ajdpq"]
+[ext_resource type="Texture2D" uid="uid://bywayk1fuaxgc" path="res://Characters/Animation/MainCharacter/Pickup/дет берет3.png" id="9_418ac"]
 [ext_resource type="Texture2D" uid="uid://xcfbbfll1v3v" path="res://Characters/Animation/MainCharacter/Walk/Walk3.png" id="9_b316h"]
-[ext_resource type="Texture2D" uid="uid://coqn3v004djrw" path="res://Characters/Animation/MainCharacter/IdleHat/IdleHat3.png" id="9_tadkr"]
 [ext_resource type="Texture2D" uid="uid://c8avd26eo4rk0" path="res://Characters/Animation/MainCharacter/Walk/Walk4.png" id="10_7ephe"]
-[ext_resource type="Texture2D" uid="uid://dapspm0bbpt0p" path="res://Characters/Animation/MainCharacter/IdleHat/IdleHat4.png" id="10_v03vb"]
-[ext_resource type="Texture2D" uid="uid://v1uph52mvbni" path="res://Characters/Animation/MainCharacter/IdleHat/IdleHat5.png" id="11_uyywg"]
+[ext_resource type="Texture2D" uid="uid://tmywbcxrdw0h" path="res://Characters/Animation/MainCharacter/Pickup/дет берет4.png" id="10_stwi5"]
+[ext_resource type="Texture2D" uid="uid://crqib0vq3xyv0" path="res://Characters/Animation/MainCharacter/Pickup/дет берет5.png" id="11_avd4u"]
+[ext_resource type="Texture2D" uid="uid://bk48468q3jcp2" path="res://Characters/Animation/MainCharacter/Pickup/дет берет6.png" id="12_bpjrb"]
+[ext_resource type="Texture2D" uid="uid://4p5or2b04g66" path="res://Characters/Animation/MainCharacter/Pickup/дет берет7.png" id="13_ydsmu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hwmk1"]
 animations = [{
@@ -39,23 +41,29 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.5,
-"texture": ExtResource("7_wtxlk")
+"duration": 1.2,
+"texture": ExtResource("7_0y6s8")
 }, {
-"duration": 1.0,
-"texture": ExtResource("8_kxaj2")
+"duration": 1.2,
+"texture": ExtResource("8_ajdpq")
 }, {
-"duration": 1.0,
-"texture": ExtResource("9_tadkr")
+"duration": 1.2,
+"texture": ExtResource("9_418ac")
 }, {
-"duration": 1.0,
-"texture": ExtResource("10_v03vb")
+"duration": 1.2,
+"texture": ExtResource("10_stwi5")
 }, {
-"duration": 1.0,
-"texture": ExtResource("11_uyywg")
+"duration": 1.2,
+"texture": ExtResource("11_avd4u")
 }, {
-"duration": 1.0,
-"texture": ExtResource("11_uyywg")
+"duration": 1.2,
+"texture": ExtResource("12_bpjrb")
+}, {
+"duration": 1.2,
+"texture": ExtResource("13_ydsmu")
+}, {
+"duration": 1.2,
+"texture": ExtResource("13_ydsmu")
 }],
 "loop": true,
 "name": &"Pickup",
@@ -91,6 +99,7 @@ position = Vector2(0, -100)
 scale = Vector2(1.575, 1.575)
 sprite_frames = SubResource("SpriteFrames_hwmk1")
 animation = &"Pickup"
+frame_progress = 0.443896
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
