@@ -4,7 +4,10 @@ using System;
 public partial class BaseItem : Node2D
 {
 	public bool IsDroped { get { return isDroped; } }
+	protected bool SetIsDroped { set { isDroped = value; } }
 	private bool isDroped = true;
+	public string ItemName = "BaseItem";
+	public Node2D InteractNode = null;
 	Global Global;
 
 	// Called when the node enters the scene tree for the first time.
@@ -41,9 +44,9 @@ public partial class BaseItem : Node2D
 		}
 	}
 
-	public void Pickup()
+	public virtual void Pickup()
 	{
-		var scene = (first_scena)GetParent();
+		var scene = GetParent();
 		var parent = (Game)scene.GetParent();
 		UI ui = parent.GetNode<UI>("Ui");
 		if (ui.InsertItem(this)) {

@@ -48,7 +48,6 @@ public partial class SideStreet : Node2D, IChar
         Global.MouseEnteredInFloor = false;
     }
 
-
     public void PlayerEnterOnMurderZone(Node2D body)
     {
         if (body is character)

@@ -69,7 +69,7 @@ size = Vector2(200, 300)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e47rt"]
 data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
 
-[sub_resource type="Resource" id="Resource_rhxq7"]
+[sub_resource type="Resource" id="Resource_o65r0"]
 script = ExtResource("14_p58f2")
 amount = 1100
 enabled = true
@@ -78,7 +78,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_wu7wj"]
+[sub_resource type="Resource" id="Resource_t6uxj"]
 script = ExtResource("15_f5luw")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(0, 0, 0)
@@ -89,7 +89,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_jlvi4"]
+[sub_resource type="Resource" id="Resource_0mcj7"]
 script = ExtResource("16_61tyk")
 iterations = 3
 offset_step = 0.2
@@ -101,7 +101,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_s26ge"]
+[sub_resource type="Resource" id="Resource_hmtuy"]
 script = ExtResource("17_ve1c0")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -117,7 +117,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_1j1yn"]
+[sub_resource type="Resource" id="Resource_na5dh"]
 script = ExtResource("18_c1td1")
 operation = 0
 rotation = Vector3(-90, 0, 0)
@@ -127,9 +127,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_vn6wm"]
+[sub_resource type="Resource" id="Resource_kbyrx"]
 script = ExtResource("13_k4gbh")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_rhxq7"), SubResource("Resource_wu7wj"), SubResource("Resource_jlvi4"), SubResource("Resource_s26ge"), SubResource("Resource_1j1yn")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_o65r0"), SubResource("Resource_t6uxj"), SubResource("Resource_0mcj7"), SubResource("Resource_hmtuy"), SubResource("Resource_na5dh")])
 
 [sub_resource type="Resource" id="Resource_ajo43"]
 script = ExtResource("21_2pbhd")
@@ -916,7 +916,7 @@ shape = SubResource("ConcavePolygonShape3D_e47rt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.10809, 0)
 script = ExtResource("12_mhw1q")
 enabled = false
-modifier_stack = SubResource("Resource_vn6wm")
+modifier_stack = SubResource("Resource_kbyrx")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
