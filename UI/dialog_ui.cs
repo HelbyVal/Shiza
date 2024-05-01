@@ -29,7 +29,6 @@ public partial class dialog_ui : Control
 			_dialog = await JsonSerializer.DeserializeAsync<List<Replica>>(fs);
 		}
 		_text = GetNode<Label>("Text");
-		_text.Text = _dialog[0].Text;
 		_replicaCount = _dialog.Count-1;
 	}
 
@@ -49,10 +48,10 @@ public partial class dialog_ui : Control
     public void StartDialog(){
 		_isStarted = true;
 		Visible = true;
+		GetNextReplica();
 	}
 
 	public void GetNextReplica(){
-		_dialogCounter += 1;
 		if(_dialogCounter > _replicaCount){
 			_isFinished = true;
 			Visible = false;
@@ -60,6 +59,7 @@ public partial class dialog_ui : Control
 			return;
 		}
 		_text.Text = _dialog[_dialogCounter].Text;
+		_dialogCounter += 1;
 		EmitSignal(SignalName.NextReplica);
 	}
 }
