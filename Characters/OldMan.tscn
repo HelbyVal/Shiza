@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtu5e2i6pi72m"]
+[gd_scene load_steps=10 format=3 uid="uid://cw65bf5tuhh8a"]
 
 [ext_resource type="Script" path="res://Characters/Scripts/OldMan.cs" id="1_653lh"]
 [ext_resource type="Texture2D" uid="uid://77gx4xnjm06w" path="res://Characters/Animation/OldMan/Idle/Idle1.png" id="1_jp2q0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://fq6upevq4y2h" path="res://Characters/Animation/OldMan/Idle/Idle3.png" id="3_yjs7x"]
 [ext_resource type="Texture2D" uid="uid://bay1mk431cqt5" path="res://Characters/Animation/OldMan/Idle/Idle4.png" id="4_o1ruy"]
 [ext_resource type="Texture2D" uid="uid://cq6v62jsp3nbf" path="res://Characters/Animation/OldMan/Idle/Idle5.png" id="5_npgdm"]
+[ext_resource type="Script" path="res://Dialogs/Dialog.cs" id="7_xta46"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lroyo"]
 animations = [{
@@ -52,3 +53,8 @@ frame_progress = 0.383183
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.125, -129.125)
 shape = SubResource("RectangleShape2D_gb7au")
+
+[node name="IdleDialog" type="Node" parent="." node_paths=PackedStringArray("NextDialog")]
+script = ExtResource("7_xta46")
+DialogPath = "res://Dialogs/2d/5SarayWay/1ded.txt"
+NextDialog = NodePath(".")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://74eunirr0u47"]
+[gd_scene load_steps=8 format=3 uid="uid://74eunirr0u47"]
 
 [ext_resource type="Script" path="res://Scenes/2d/Scripts/SarayWay.cs" id="1_6xfx7"]
 [ext_resource type="Texture2D" uid="uid://cfdisftchy5xf" path="res://Scenes/2d/Icons/SarayWay.png" id="2_ihqsv"]
 [ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="3_3e6fc"]
-[ext_resource type="PackedScene" uid="uid://dtu5e2i6pi72m" path="res://Characters/OldMan.tscn" id="4_5utv2"]
+[ext_resource type="PackedScene" uid="uid://cw65bf5tuhh8a" path="res://Characters/OldMan.tscn" id="4_5utv2"]
+[ext_resource type="PackedScene" uid="uid://dbun81il8jmoq" path="res://UI/dialog_ui.tscn" id="5_taoi7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lh2p"]
 size = Vector2(65.125, 381.625)
@@ -45,9 +46,20 @@ position = Vector2(4, 5)
 scale = Vector2(0.950646, 1)
 polygon = PackedVector2Array(110, 631, 510, 633, 992, 641, 1372.75, 645, 1717.78, 843, 98, 882)
 
+[node name="DialogUI" parent="." instance=ExtResource("5_taoi7")]
+offset_left = 4.0
+offset_top = -640.0
+offset_right = 4.0
+offset_bottom = -640.0
+
+[connection signal="input_event" from="OldMan/Area2D" to="." method="OnDedClickEvent"]
 [connection signal="body_entered" from="CrossCityArea" to="." method="PlayerEnterOnCrossCity"]
 [connection signal="input_event" from="CrossCityArea" to="." method="ClickOnCrossCity"]
 [connection signal="mouse_entered" from="CrossCityArea" to="." method="CrossCityMouseEntered"]
 [connection signal="mouse_exited" from="CrossCityArea" to="." method="CrossCityMouseExited"]
 [connection signal="mouse_entered" from="AreaFloor" to="." method="FloorMouseEntered"]
 [connection signal="mouse_exited" from="AreaFloor" to="." method="FloorMouseExited"]
+[connection signal="DialogFinished" from="DialogUI" to="." method="OnDialogFinished"]
+[connection signal="DialogStarted" from="DialogUI" to="." method="OnDialogFinished"]
+
+[editable path="OldMan"]

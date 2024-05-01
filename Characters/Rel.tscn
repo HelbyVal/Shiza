@@ -53,10 +53,12 @@ animation = &"Idle"
 position = Vector2(1, -107.625)
 shape = SubResource("RectangleShape2D_66csm")
 
-[node name="StartDialog" type="Node" parent="."]
+[node name="StartDialog" type="Node" parent="." node_paths=PackedStringArray("NextDialog")]
 script = ExtResource("7_u5vej")
 DialogPath = "res://Dialogs/2d/1MurderScene/Tayler/tayler1.txt"
+NextDialog = NodePath("../IdleDialog")
 
-[node name="IdleDialog" type="Node" parent="."]
+[node name="IdleDialog" type="Node" parent="." node_paths=PackedStringArray("NextDialog")]
 script = ExtResource("7_u5vej")
 DialogPath = "res://Dialogs/2d/1MurderScene/Tayler/taylerIdelDialog.txt"
+NextDialog = NodePath(".")
