@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmho8p4rbfhdl"]
+
+[ext_resource type="PackedScene" uid="uid://dmd51lpshfm78" path="res://Assets/Models/Objects/Car/car.glb" id="1_nh8ai"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p6lel"]
+size = Vector3(0.304844, 1.24023, 0.582092)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ups5"]
+size = Vector3(0.624512, 1.24615, 0.29303)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pw4lj"]
+size = Vector3(4.81, 1.97327, 1.86755)
+
+[node name="CarModel" type="Node3D"]
+
+[node name="car" parent="." instance=ExtResource("1_nh8ai")]
+
+[node name="Trunkdoor_Left_Body_0" parent="car/Sketchfab_model/814ea050e830489cbc48a0dfc4df5986_fbx/RootNode/Trunkdoor_Left/Object_109" index="0"]
+transform = Transform3D(1, 0, 0, 5.96046e-08, 1, -9.31323e-10, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionDoorLeft" type="StaticBody3D" parent="car/Sketchfab_model/814ea050e830489cbc48a0dfc4df5986_fbx/RootNode/Trunkdoor_Left" index="4"]
+transform = Transform3D(33.627, -8.46387e-07, 20.4751, 20.4746, 0.26931, -33.6262, -0.140058, 39.3692, 0.230025, -6.57715, 13.7534, -49.3375)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="car/Sketchfab_model/814ea050e830489cbc48a0dfc4df5986_fbx/RootNode/Trunkdoor_Left/CollisionDoorLeft"]
+transform = Transform3D(0.839232, 5.90105e-10, -0.543775, 8.36724e-11, 1, 1.21433e-09, 0.543776, -1.06461e-09, 0.839231, -0.0337772, 1.25636, 0.357627)
+shape = SubResource("BoxShape3D_p6lel")
+
+[node name="CollisionDoorRight" type="StaticBody3D" parent="car/Sketchfab_model/814ea050e830489cbc48a0dfc4df5986_fbx/RootNode/Trunkdoor_Right" index="3"]
+transform = Transform3D(-16.1622, 1.50428e-06, -35.8997, -35.8988, 0.269307, 16.1618, 0.245569, 39.3692, -0.110555, 0.608318, 0.0583572, -49.4198)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="car/Sketchfab_model/814ea050e830489cbc48a0dfc4df5986_fbx/RootNode/Trunkdoor_Right/CollisionDoorRight"]
+transform = Transform3D(0.914854, 1.33663e-10, 0.403785, -5.43643e-11, 1, -2.07852e-10, -0.403785, 1.68202e-10, 0.914854, 0.0342066, 1.2655, 0.0236737)
+shape = SubResource("BoxShape3D_2ups5")
+
+[node name="CollisionCar" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1035, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionCar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25081, 1.04177, -0.00799417)
+shape = SubResource("BoxShape3D_pw4lj")
+
+[editable path="car"]

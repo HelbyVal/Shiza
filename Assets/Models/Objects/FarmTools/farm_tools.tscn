@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://ot7r6xjchvct"]
+
+[ext_resource type="PackedScene" uid="uid://bmbutl3qksupd" path="res://Assets/Models/Objects/FarmTools/farm_tools.glb" id="1_yn2c8"]
+
+[node name="FarmTools" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_yn2c8")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 2.01487, 0)
+
+[node name="Cube_0" parent="Sketchfab_Scene/Sketchfab_model/root/GLTF_SceneRootNode" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.68817, 0.138709)
+
+[node name="Cube_002_1" parent="Sketchfab_Scene/Sketchfab_model/root/GLTF_SceneRootNode" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.80965, -3.64051, 0.132027)
+
+[node name="Cube_003_2" parent="Sketchfab_Scene/Sketchfab_model/root/GLTF_SceneRootNode" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.38561, -4.45396, 0.115243)
+
+[node name="Cube_001_3" parent="Sketchfab_Scene/Sketchfab_model/root/GLTF_SceneRootNode" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.12654, -5.64682, -0.237266)
+
+[node name="Cube_004_4" parent="Sketchfab_Scene/Sketchfab_model/root/GLTF_SceneRootNode" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.39017, -6.20002, -0.290444)
+
+[editable path="Sketchfab_Scene"]

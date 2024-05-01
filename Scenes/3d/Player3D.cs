@@ -6,7 +6,8 @@ public partial class Player3D : CharacterBody3D
 	 [Signal]
 	 public delegate void RotationFinishedEventHandler();
 	//Приветик
-	public const float Speed = 5.0f;
+	[Export]
+	public float Speed = 5.0f;
 	public const float JumpVelocity = 4.5f;
 	public const float RotationSpeed = 0.02f;
 	private float cameraLimitUp = Godot.Mathf.DegToRad(60);
@@ -14,6 +15,8 @@ public partial class Player3D : CharacterBody3D
 
 	private float mouseSens;
 	private Camera3D camera;
+	private Timer _stepTimer;
+	private AudioStreamPlayer _stepAudio;
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 	private bool isMovementOn = true;
@@ -29,6 +32,8 @@ public partial class Player3D : CharacterBody3D
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		mouseSens = GetNode<Global>("/root/Global").MouseSens;
 		GetNode<MeshInstance3D>("BodyMesh").Visible = false;
+		_stepAudio = GetNode<AudioStreamPlayer>("StepAudio");
+		_stepTimer = GetNode<Timer>("StepTimer");
     }
 
     public override void _Process(double delta)
@@ -74,6 +79,13 @@ public partial class Player3D : CharacterBody3D
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
+		}
+
+		if(velocity != Vector3.Zero && _stepTimer.TimeLeft <= 0){
+			var pitch = GD.RandRange(0.8, 1.2);
+			_stepAudio.PitchScale = (float)pitch;
+			_stepAudio.Play();
+			_stepTimer.Start();
 		}
 
 		Velocity = velocity;

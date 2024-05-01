@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://wggdm0djm60d"]
+
+[ext_resource type="PackedScene" uid="uid://vy3y0qhl0wro" path="res://Assets/Models/Objects/Lamp/ceiling_lamp.glb" id="1_k5plq"]
+
+[node name="Lamp" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_k5plq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.148, 0)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuoum8tnqr7xi"]
+
+[ext_resource type="PackedScene" uid="uid://1sjo8q5fg5yt" path="res://Assets/Models/Objects/Grass/realistics_grass_03.glb" id="1_usmtp"]
+
+[node name="Grass" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_usmtp")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
