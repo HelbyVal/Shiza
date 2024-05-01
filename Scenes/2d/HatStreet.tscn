@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl1h01sxqx7h5"]
+
+[ext_resource type="Script" path="res://Scenes/2d/Scripts/HatStreet.cs" id="1_41meu"]
+[ext_resource type="Texture2D" uid="uid://dhdyujhm5qark" path="res://Scenes/2d/Icons/HatStreet.png" id="2_bo8eb"]
+[ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="3_2iph0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lh2p"]
+size = Vector2(65.125, 886.813)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_3g606"]
+vertices = PackedVector2Array(816, 807, 812, 678, 1802, 687, 1823, 881, 105, 884, 367, 807, 265, 674, 108, 674)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(6, 5, 4, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(270, 664, 98, 664, 95, 895, 1835, 891, 1812, 678, 802, 668, 806, 797, 372, 797)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="SarayWay" type="Node2D"]
+script = ExtResource("1_41meu")
+
+[node name="HatStreet" type="Sprite2D" parent="."]
+position = Vector2(958, 494)
+texture = ExtResource("2_bo8eb")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_2iph0")]
+position = Vector2(1691, 785)
+
+[node name="CrossCityArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrossCityArea"]
+position = Vector2(1816, 451.406)
+shape = SubResource("RectangleShape2D_2lh2p")
+debug_color = Color(0.968627, 0.160784, 0.203922, 0.419608)
+
+[node name="AreaFloor" type="Area2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="AreaFloor"]
+navigation_polygon = SubResource("NavigationPolygon_3g606")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AreaFloor"]
+polygon = PackedVector2Array(272, 666, 370, 798, 806, 791, 806, 666, 1812, 676, 1833, 876, 98, 882, 102, 666)
+
+[connection signal="body_entered" from="CrossCityArea" to="." method="PlayerEnterOnCrossCity"]
+[connection signal="input_event" from="CrossCityArea" to="." method="ClickOnCrossCity"]
+[connection signal="mouse_entered" from="CrossCityArea" to="." method="CrossCityMouseEntered"]
+[connection signal="mouse_exited" from="CrossCityArea" to="." method="CrossCityMouseExited"]
+[connection signal="mouse_entered" from="AreaFloor" to="." method="FloorMouseEntered"]
+[connection signal="mouse_exited" from="AreaFloor" to="." method="FloorMouseExited"]

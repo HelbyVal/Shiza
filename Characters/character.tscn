@@ -93,7 +93,6 @@ sprite_frames = SubResource("SpriteFrames_hwmk1")
 animation = &"Pickup"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, -57.6406)

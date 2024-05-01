@@ -5,10 +5,14 @@ using System;
 public partial class first_scena : Node2D, IChar
 {
     Global Global;
+    character Player;
+    public const float speedScaling = 0.007f;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
         Global = GetNode<Global>("/root/Global");
+        Player = GetNode<character>("CharacterBody2D");
+        Player.ChangeScale = speedScaling;
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,14 +60,15 @@ public partial class first_scena : Node2D, IChar
         if (body is character)
         {
             var parent = (Game)GetParent();
-            parent.MoveLocation(this,Global.SideStreet, new Vector2(186, 740), new Vector2(1.5f, 1.5f));
+            parent.MoveLocation(this,Global.SideStreet, new Vector2(186, 740), new Vector2(1f, 1f));
         }
     }
 
-    public void MoveCharacter(Vector2 pos)
+    public void MoveCharacter(Vector2 pos, Vector2 scale)
     {
         var player = GetNode<character>("CharacterBody2D");
         player.GlobalPosition = pos;
+        player.Scale = scale;
         player.MoveToWay(pos);
     }
 }

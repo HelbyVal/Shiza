@@ -9,6 +9,9 @@ public partial class Global : Node
 
 	public first_scena FirstScena;
 	public SideStreet SideStreet;
+	public CrossCity CrossCity;
+	public SarayWay SarayWay;
+	public HatStreet HatStreet;
 	public UI UI;
 	//public CursorMode PreviousModeCursor
 	//{
@@ -36,10 +39,23 @@ public partial class Global : Node
         var loadingUI = (PackedScene)ResourceLoader.Load("res://UI/UI.tscn");
 		var UI = (UI)loadingUI.Instantiate();
 		this.UI = UI;
+
+        var loadingCrossCity = (PackedScene)ResourceLoader.Load("res://Scenes/2d/CrossCity.tscn");
+        var CrossCity = (CrossCity)loadingCrossCity.Instantiate();
+        this.CrossCity = CrossCity;
+
+        var loadingSarayWay = (PackedScene)ResourceLoader.Load("res://Scenes/2d/SarayWay.tscn");
+        var SarayWay = (SarayWay)loadingSarayWay.Instantiate();
+        this.SarayWay = SarayWay;
+
+        var loadingHatStreet = (PackedScene)ResourceLoader.Load("res://Scenes/2d/HatStreet.tscn");
+        var HatStreet = (HatStreet)loadingHatStreet.Instantiate();
+        this.HatStreet = HatStreet;
+
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
 	}
 

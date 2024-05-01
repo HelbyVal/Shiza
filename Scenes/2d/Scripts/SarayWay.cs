@@ -2,31 +2,22 @@ using Godot;
 using Shiza.Scripts;
 using System;
 
-public partial class SideStreet : Node2D, IChar
+public partial class SarayWay : Node2D, IChar
 {
-	character Player;
-	Global Global;
+    character Player;
+    Global Global;
     public const float speedScaling = 0f;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
-	{
-		Player = GetNode<character>("CharacterBody2D");
+    {
+        Player = GetNode<character>("CharacterBody2D");
         Global = GetNode<Global>("/root/Global");
         Player.ChangeScale = speedScaling;
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
-    public void MurderZoneMouseEntered()
-	{
-	}
-
-    public void MurderZoneMouseExited()
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
     {
-        Global.MouseEnteredInFloor = false;
     }
 
     public void CrossCityMouseEntered()
@@ -37,7 +28,7 @@ public partial class SideStreet : Node2D, IChar
     {
         Global.MouseEnteredInFloor = false;
     }
-    
+
     public void FloorMouseEntered()
     {
         Global.MouseEnteredInFloor = true;
@@ -48,31 +39,12 @@ public partial class SideStreet : Node2D, IChar
         Global.MouseEnteredInFloor = false;
     }
 
-
-    public void PlayerEnterOnMurderZone(Node2D body)
-    {
-        if (body is character)
-        {
-            var parent = (Game)GetParent();
-            parent.MoveLocation(this, Global.FirstScena, new Vector2(1610,835), new Vector2(1f,1f));
-        }
-    }
-
-    public void ClickOnMurderZone(Node veiwport, InputEvent e, int shape_idx)
-    {
-        if (e.IsActionPressed("mouse_click"))
-        {
-            var player = GetNode<character>("CharacterBody2D");
-            player.MoveToWay(new Vector2(100, 835));
-        }
-    }
-
     public void ClickOnCrossCity(Node veiwport, InputEvent e, int shape_idx)
     {
         if (e.IsActionPressed("mouse_click"))
         {
             var player = GetNode<character>("CharacterBody2D");
-            player.MoveToWay(new Vector2(1825, 815));
+            player.MoveToWay(new Vector2(100, 745));
         }
     }
 
@@ -81,7 +53,7 @@ public partial class SideStreet : Node2D, IChar
         if (body is character)
         {
             var parent = (Game)GetParent();
-            parent.MoveLocation(this, Global.CrossCity, new Vector2(186, 745), new Vector2(0.7f, 0.7f));
+            parent.MoveLocation(this, Global.CrossCity, new Vector2(1715, 740), new Vector2(0.7f, 0.7f));
         }
     }
 

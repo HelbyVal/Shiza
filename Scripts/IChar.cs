@@ -9,6 +9,6 @@ namespace Shiza.Scripts
 {
     public interface IChar
     {
-        public void MoveCharacter(Vector2 pos);
+        public void MoveCharacter(Vector2 pos, Vector2 scale);
     }
 }

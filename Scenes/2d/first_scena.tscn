@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bws2jpaamsvkl"]
+[gd_scene load_steps=9 format=3 uid="uid://bws2jpaamsvkl"]
 
 [ext_resource type="Script" path="res://Scenes/2d/Scripts/first_scena.cs" id="1_38uot"]
 [ext_resource type="Texture2D" uid="uid://clf5hxmx04qsw" path="res://Scenes/2d/Icons/City.png" id="2_deh76"]
 [ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="2_fjwjo"]
+[ext_resource type="PackedScene" uid="uid://cobusxbevqwqo" path="res://Characters/Rel.tscn" id="4_oen0x"]
 [ext_resource type="Script" path="res://Scenes/2d/Button.cs" id="5_6r3fp"]
 [ext_resource type="PackedScene" uid="uid://osnyncyewe4o" path="res://Items/Rag.tscn" id="7_8g80b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7y6c"]
+size = Vector2(79, 707)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1bi07"]
 vertices = PackedVector2Array(1116, 1215, 1344, 1221, 1342, 1221, 482, 1192, 481, 1192, 564, 1163, 565, 1164, 1727, 1422, 292, 1417, 411, 1341, 1618, 1369, 1707, 1358, 1453, 1238, 894, 1217, 661, 1147, 395, 1226)
@@ -12,15 +16,19 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(
 outlines = Array[PackedVector2Array]([PackedVector2Array(400, 1336, 385, 1220, 478, 1183, 563, 1154, 663, 1137, 895, 1207, 1116, 1205, 1344, 1211, 1457, 1229, 1621, 1359, 1715, 1347, 1741, 1433, 260, 1427)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7y6c"]
-size = Vector2(79, 707)
-
 [node name="FirstScena" type="Node2D"]
 script = ExtResource("1_38uot")
 
 [node name="City" type="Sprite2D" parent="."]
 position = Vector2(961, 464)
 texture = ExtResource("2_deh76")
+
+[node name="SideStreetWay" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SideStreetWay"]
+position = Vector2(1761.5, 440.5)
+shape = SubResource("RectangleShape2D_a7y6c")
+debug_color = Color(0.964706, 0.180392, 0.0901961, 0.419608)
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -34,6 +42,10 @@ polygon = PackedVector2Array(248, 862, 219, 739, 275, 722, 405, 682, 501, 659, 7
 
 [node name="Rag" parent="." instance=ExtResource("7_8g80b")]
 position = Vector2(889, 695)
+
+[node name="Rel" parent="." instance=ExtResource("4_oen0x")]
+position = Vector2(1422, 677)
+scale = Vector2(0.707437, 0.707437)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_fjwjo")]
 position = Vector2(462, 814)
@@ -49,17 +61,10 @@ text = "Сменить сцену
 script = ExtResource("5_6r3fp")
 metadata/_edit_use_anchors_ = true
 
-[node name="SideStreetWay" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SideStreetWay"]
-position = Vector2(1761.5, 440.5)
-shape = SubResource("RectangleShape2D_a7y6c")
-debug_color = Color(0.964706, 0.180392, 0.0901961, 0.419608)
-
+[connection signal="body_entered" from="SideStreetWay" to="." method="PlayerEnterOnStreetWay"]
+[connection signal="input_event" from="SideStreetWay" to="." method="ClickOnStreetWay"]
+[connection signal="mouse_entered" from="SideStreetWay" to="." method="StreetWayMouseEntered"]
 [connection signal="mouse_entered" from="Area2D" to="." method="OnFloorMouseEntered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="OnFloorMouseExited"]
 [connection signal="mouse_shape_entered" from="Area2D" to="." method="OnFloorMouseShapeEntered"]
 [connection signal="pressed" from="Button" to="Button" method="OnPressed"]
-[connection signal="body_entered" from="SideStreetWay" to="." method="PlayerEnterOnStreetWay"]
-[connection signal="input_event" from="SideStreetWay" to="." method="ClickOnStreetWay"]
-[connection signal="mouse_entered" from="SideStreetWay" to="." method="StreetWayMouseEntered"]

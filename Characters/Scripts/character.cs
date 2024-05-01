@@ -5,8 +5,9 @@ public partial class character : CharacterBody2D
 {
 	private NavigationAgent2D navigationAgent;
 	private CollisionShape2D collisionShape;
-	public const float Speed = 250.0f;
-	public const float ChangeScale = 0.01f;
+	public const float Speed = 350.0f;
+	public float ChangeScale = 0.005f;
+	public const float MinimumScale = 0.4f;
 	Vector2 click_position = new Vector2();
 	Vector2 target_position = new Vector2();
 	AnimatedSprite2D animatedSprite;
@@ -54,13 +55,12 @@ public partial class character : CharacterBody2D
 
 			if (velocity.Y > 0)
 			{
-				animatedSprite.Scale = animatedSprite.Scale + (new Vector2(ChangeScale, ChangeScale) * velocity.Abs().Y/Speed);
-				collisionShape.Scale = collisionShape.Scale + (new Vector2(ChangeScale, ChangeScale) * velocity.Abs().Y/Speed);
+				Scale = Scale + new Vector2((float)delta*60, (float)delta * 60) *(new Vector2(ChangeScale, ChangeScale) * velocity.Abs().Y/Speed);
             }
 			else
 			{
-                animatedSprite.Scale = animatedSprite.Scale - (new Vector2(ChangeScale, ChangeScale) * velocity.Abs().Y/Speed);
-                collisionShape.Scale = collisionShape.Scale - (new Vector2(ChangeScale, ChangeScale) * velocity.Abs().Y/Speed);
+                if (Scale.Y > MinimumScale)
+					Scale = Scale - new Vector2((float)delta * 60, (float)delta * 60) * (new Vector2(ChangeScale, ChangeScale) * velocity.Abs().Y/Speed);
             }
 
 			if (Velocity.X > 0)

@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3losi7iioreb"]
+
+[ext_resource type="Script" path="res://Scenes/2d/Scripts/CrossCity.cs" id="1_qdv55"]
+[ext_resource type="Texture2D" uid="uid://creekocli7n8d" path="res://Scenes/2d/Icons/CrossSity.png" id="2_6sqym"]
+[ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="3_0lhmj"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_3g606"]
+vertices = PackedVector2Array(1296, 538, 1333, 561, 1195, 582, 1135, 555, 1869, 701, 1876, 927, 90, 930, 1373, 712, 1294, 692, 923, 536, 1050, 531, 1192, 594, 515, 681, 90, 684, 247, 682, 659, 562, 764, 531, 682, 530)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 7, 6), PackedInt32Array(9, 10, 3, 11, 8, 6, 12), PackedInt32Array(6, 13, 14, 12), PackedInt32Array(3, 2, 11), PackedInt32Array(9, 12, 15, 16), PackedInt32Array(17, 16, 15)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(80, 675, 80, 941, 1887, 937, 1879, 691, 1374, 702, 1299, 683, 1203, 591, 1363, 567, 1299, 528, 1136, 545, 1053, 521, 923, 526, 764, 521, 677, 520, 652, 555, 511, 671, 247, 672)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npqan"]
+size = Vector2(67, 269.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_erq45"]
+size = Vector2(60.5, 471)
+
+[node name="CrossCity" type="Node2D"]
+script = ExtResource("1_qdv55")
+
+[node name="CrossStreet" type="Sprite2D" parent="."]
+position = Vector2(964, 505)
+texture = ExtResource("2_6sqym")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_0lhmj")]
+position = Vector2(186, 742)
+
+[node name="AreaFloor" type="Area2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="AreaFloor"]
+navigation_polygon = SubResource("NavigationPolygon_3g606")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AreaFloor"]
+polygon = PackedVector2Array(90, 923, 1874, 926, 1868, 701, 1369, 710, 1293, 691, 1188, 593, 1196, 582, 1330, 563, 1295, 536, 1139, 553, 1053, 533, 923, 534, 680, 528, 658, 553, 495, 674, 91, 683)
+
+[node name="SideStreetWay" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SideStreetWay"]
+position = Vector2(67, 805.625)
+shape = SubResource("RectangleShape2D_npqan")
+debug_color = Color(0.964706, 0.172549, 0.2, 0.419608)
+
+[node name="HatStreetWay" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HatStreetWay"]
+position = Vector2(673, 309.5)
+shape = SubResource("RectangleShape2D_erq45")
+debug_color = Color(0.913725, 0, 0.184314, 0.419608)
+
+[node name="SarayWay" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SarayWay"]
+position = Vector2(1852, 805)
+shape = SubResource("RectangleShape2D_npqan")
+debug_color = Color(0.964706, 0.172549, 0.2, 0.419608)
+
+[connection signal="mouse_entered" from="AreaFloor" to="." method="FloorMouseEntered"]
+[connection signal="mouse_exited" from="AreaFloor" to="." method="FloorMouseExited"]
+[connection signal="body_entered" from="SideStreetWay" to="." method="PlayerEnterOnSideStreet"]
+[connection signal="input_event" from="SideStreetWay" to="." method="ClickOnSideStreet"]
+[connection signal="mouse_entered" from="SideStreetWay" to="." method="SideStreetMouseEntered"]
+[connection signal="mouse_exited" from="SideStreetWay" to="." method="SideStreetMouseExited"]
+[connection signal="body_entered" from="HatStreetWay" to="." method="PlayerEnterOnHatStreet"]
+[connection signal="input_event" from="HatStreetWay" to="." method="ClickOnHatStreet"]
+[connection signal="mouse_entered" from="HatStreetWay" to="." method="HatStreetMouseEntered"]
+[connection signal="mouse_exited" from="HatStreetWay" to="." method="SideStreetMouseExited"]
+[connection signal="body_entered" from="SarayWay" to="." method="PlayerEnterOnSarayWay"]
+[connection signal="input_event" from="SarayWay" to="." method="ClickOnSarayWay"]
+[connection signal="mouse_entered" from="SarayWay" to="." method="CrossCityMouseEntered"]
+[connection signal="mouse_exited" from="SarayWay" to="." method="CrossCityMouseExited"]
