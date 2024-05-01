@@ -44,7 +44,7 @@
 [ext_resource type="AudioStream" uid="uid://dpsiad617s7sw" path="res://Assets/Audio/Screaming.mp3" id="41_uxfib"]
 [ext_resource type="AudioStream" uid="uid://c81ajiqqe2ksc" path="res://Assets/Audio/MumblingShort.mp3" id="42_pvofx"]
 [ext_resource type="AudioStream" uid="uid://mrr15xjpxekj" path="res://Assets/Audio/night-sounds.mp3" id="44_yh2ms"]
-[ext_resource type="PackedScene" uid="uid://d3lstmcj0a5wn" path="res://UI/EndGame.tscn" id="45_rx5gy"]
+[ext_resource type="PackedScene" path="res://UI/EndGame.tscn" id="45_rx5gy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r4xoa"]
 radius = 1.33
@@ -68,7 +68,7 @@ size = Vector2(200, 300)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e47rt"]
 data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
 
-[sub_resource type="Resource" id="Resource_t2iye"]
+[sub_resource type="Resource" id="Resource_523wa"]
 script = ExtResource("14_p58f2")
 amount = 1100
 enabled = true
@@ -77,7 +77,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_wmt1g"]
+[sub_resource type="Resource" id="Resource_paii2"]
 script = ExtResource("15_f5luw")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(0, 0, 0)
@@ -88,7 +88,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_vrlpe"]
+[sub_resource type="Resource" id="Resource_t66uh"]
 script = ExtResource("16_61tyk")
 iterations = 3
 offset_step = 0.2
@@ -100,7 +100,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_fxk18"]
+[sub_resource type="Resource" id="Resource_5kxu6"]
 script = ExtResource("17_ve1c0")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -116,7 +116,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_fy1ig"]
+[sub_resource type="Resource" id="Resource_xv313"]
 script = ExtResource("18_c1td1")
 operation = 0
 rotation = Vector3(-90, 0, 0)
@@ -126,9 +126,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_vodcj"]
+[sub_resource type="Resource" id="Resource_8q8tt"]
 script = ExtResource("13_k4gbh")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_t2iye"), SubResource("Resource_wmt1g"), SubResource("Resource_vrlpe"), SubResource("Resource_fxk18"), SubResource("Resource_fy1ig")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_523wa"), SubResource("Resource_paii2"), SubResource("Resource_t66uh"), SubResource("Resource_5kxu6"), SubResource("Resource_xv313")])
 
 [sub_resource type="Resource" id="Resource_ajo43"]
 script = ExtResource("21_2pbhd")
@@ -914,8 +914,7 @@ shape = SubResource("ConcavePolygonShape3D_e47rt")
 [node name="ProtonScatter" type="Node3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.10809, 0)
 script = ExtResource("12_mhw1q")
-enabled = false
-modifier_stack = SubResource("Resource_vodcj")
+modifier_stack = SubResource("Resource_8q8tt")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -1132,7 +1131,6 @@ visible = false
 
 [connection signal="body_entered" from="CutScenaTrigger" to="." method="OnArea3dBodyEntered"]
 [connection signal="animation_finished" from="Father/AnimationPlayer" to="." method="OnAnimationFatherFinished"]
-[connection signal="NextReplica" from="DialogUI" to="." method="OnDialogNextReplica"]
 [connection signal="body_entered" from="ScreamingTrigger" to="." method="OnScreamingTriggerEntered"]
 
 [editable path="Player"]
