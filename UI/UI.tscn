@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bki57fbrd1yme"]
 
-[ext_resource type="Texture2D" uid="uid://3cff172r0u01" path="res://UI/Interface.png" id="1_ogdss"]
 [ext_resource type="Script" path="res://UI/UI.cs" id="1_ugx2o"]
+[ext_resource type="Texture2D" uid="uid://b0kglc8get04" path="res://UI/UI.png" id="2_2b6fg"]
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -13,6 +13,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ugx2o")
 
-[node name="Interface" type="Sprite2D" parent="."]
+[node name="Ui" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
-texture = ExtResource("1_ogdss")
+texture = ExtResource("2_2b6fg")
