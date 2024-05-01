@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shiza"
-run/main_scene="res://Scenes/2d/first_scena.tscn"
+run/main_scene="res://Game/Game.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://Characters/Icons/icon.svg"
 
@@ -31,6 +31,10 @@ mouse_cursor/custom_image_hotspot=Vector2(50, 0)
 [dotnet]
 
 project/assembly_name="Shiza"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg")
 
 [input]
 

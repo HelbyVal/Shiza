@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfp3cl5jc41o1"]
+
+[ext_resource type="Texture2D" uid="uid://tdifxkpi80cb" path="res://Scenes/2d/Icons/SideStreet.png" id="1_j2s83"]
+[ext_resource type="Script" path="res://Scenes/2d/Scripts/SideStreet.cs" id="1_ydgug"]
+[ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="3_ypimk"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_3g606"]
+vertices = PackedVector2Array(249, 734, 248, 734, 529, 728, 1811, 892, 104, 893, 105, 745, 1065, 732, 1489, 732, 1811, 751)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 0, 2, 6), PackedInt32Array(3, 6, 7, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(96, 736, 94, 904, 1821, 902, 1822, 742, 1490, 722, 1065, 722, 529, 718, 248, 724)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0ccl"]
+size = Vector2(1638, 162)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npqan"]
+size = Vector2(67, 800.5)
+
+[node name="SideStreet" type="Node2D"]
+script = ExtResource("1_ydgug")
+
+[node name="SideStreet" type="Sprite2D" parent="."]
+position = Vector2(964, 505)
+texture = ExtResource("1_j2s83")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_ypimk")]
+position = Vector2(186, 742)
+
+[node name="AreaFloor" type="Area2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="AreaFloor"]
+navigation_polygon = SubResource("NavigationPolygon_3g606")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaFloor"]
+position = Vector2(956, 820)
+shape = SubResource("RectangleShape2D_f0ccl")
+
+[node name="MurderZoneWay" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MurderZoneWay"]
+position = Vector2(97, 496)
+shape = SubResource("RectangleShape2D_npqan")
+debug_color = Color(0.964706, 0.172549, 0.2, 0.419608)
+
+[node name="CrossCityWay" type="Area2D" parent="MurderZoneWay"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MurderZoneWay/CrossCityWay"]
+position = Vector2(1820, 502.5)
+shape = SubResource("RectangleShape2D_npqan")
+debug_color = Color(0.964706, 0.172549, 0.2, 0.419608)
+
+[connection signal="mouse_entered" from="AreaFloor" to="." method="FloorMouseEntered"]
+[connection signal="mouse_exited" from="AreaFloor" to="." method="FloorMouseExited"]
+[connection signal="body_entered" from="MurderZoneWay" to="." method="PlayerEnterOnMurderZone"]
+[connection signal="input_event" from="MurderZoneWay" to="." method="ClickOnMurderZone"]
+[connection signal="mouse_entered" from="MurderZoneWay" to="." method="MurderZoneMouseEntered"]
+[connection signal="mouse_exited" from="MurderZoneWay" to="." method="MurderZoneMouseExited"]
+[connection signal="mouse_entered" from="MurderZoneWay/CrossCityWay" to="." method="CrossCityMouseEntered"]
+[connection signal="mouse_exited" from="MurderZoneWay/CrossCityWay" to="." method="CrossCityMouseExited"]

@@ -9,6 +9,9 @@ public partial class dialog_ui : Control
 	[Signal]
 	public delegate void DialogFinishedEventHandler();
 
+	[Signal]
+	public delegate void NextReplicaEventHandler();
+
 	[Export(PropertyHint.File, "*.txt")]
 	public string DialogPath {get; set;}
 	private List<Replica> _dialog = new List<Replica>();
@@ -38,7 +41,7 @@ public partial class dialog_ui : Control
     public override void _Input(InputEvent @event)
     {
         if (Input.IsActionJustPressed("mouse_click") && _isStarted){
-			NextReplica();
+			GetNextReplica();
 		}
     }
 
@@ -48,7 +51,7 @@ public partial class dialog_ui : Control
 		Visible = true;
 	}
 
-	public void NextReplica(){
+	public void GetNextReplica(){
 		_dialogCounter += 1;
 		if(_dialogCounter > _replicaCount){
 			_isFinished = true;
@@ -57,5 +60,6 @@ public partial class dialog_ui : Control
 			return;
 		}
 		_text.Text = _dialog[_dialogCounter].Text;
+		EmitSignal(SignalName.NextReplica);
 	}
 }

@@ -41,7 +41,7 @@ public partial class character : CharacterBody2D
 		}
 
 		var global = GetNode<Global>("/root/Global");
-        if (Input.IsActionJustPressed("mouse_click") && (global.ModeCursor == Global.CursorMode.Walk)){
+        if (Input.IsActionJustPressed("mouse_click") && global.MouseEnteredInFloor){
 			var mousePosition = GetGlobalMousePosition();
 			navigationAgent.TargetPosition = mousePosition;
 		}
@@ -87,14 +87,18 @@ public partial class character : CharacterBody2D
         }
     }
 
-	public void MoveTo(Vector2 position)
+	public void MoveToItem(Vector2 position)
 	{
-        GD.Print("MoveTo");
         navigationAgent.TargetPosition = position;
 		picking = true;
 	}
 
-	private async void ActorSetup()
+    public void MoveToWay(Vector2 position)
+    {
+        navigationAgent.TargetPosition = position;
+    }
+
+    private async void ActorSetup()
     {
         // Wait for the first physics frame so the NavigationServer can sync.
         await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
@@ -105,16 +109,6 @@ public partial class character : CharacterBody2D
 
 	public void AnimationFineshed()
 	{
-		if (previousAction == CharacterAction.Pickup)
-		{
-			
-			if (PickupItem != null)
-			{
-				PickupItem.Pickup();
-			}
-			ChangeAnimation(CharacterAction.Idle);
-			picking = false;
-		}
 	}
 
 	public void AnimationChanged()

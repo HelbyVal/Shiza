@@ -20,12 +20,12 @@ public partial class BaseItem : Node2D
 
 	public void OnItemMouseEntered()
 	{
-        Global.ChangeMouse(Global.CursorMode.Pickup);
-    } 
+		//Global.MouseEnteredInFloor = false;
+	}
 
 	public void OnItemMouseExited()
 	{
-        Global.ChangeMouse(Global.PreviousModeCursor);
+        //Global.MouseEnteredInFloor = true;
     }
 
 	public void BodyEntered(Node2D body)
@@ -35,7 +35,7 @@ public partial class BaseItem : Node2D
 			var player = (character)body;
 			if (player.Picking)
 			{
-				player.MoveTo(player.Position);
+				player.MoveToItem(player.Position);
 				player.Pickup(this);
 			}
 		}
@@ -43,12 +43,13 @@ public partial class BaseItem : Node2D
 
 	public void Pickup()
 	{
-		var parent = (first_scena)GetParent();
+		var scene = (first_scena)GetParent();
+		var parent = (Game)scene.GetParent();
 		UI ui = parent.GetNode<UI>("Ui");
 		if (ui.InsertItem(this)) {
 			isDroped = false;
-            Global.ChangeMouse(Global.PreviousModeCursor);
-			DeleteOnScene(ui);
+            //Global.ChangeMouse(Global.PreviousModeCursor);
+			DeleteOnScene(ui,scene);
         }
 	}
 
@@ -63,16 +64,15 @@ public partial class BaseItem : Node2D
 				{
 					var scene = (first_scena)parent;
 					var person = scene.GetNode<character>("CharacterBody2D");
-					person.MoveTo(this.Position);
+					person.MoveToItem(this.Position);
 				}
 			}
 		}
 	}
 	
-	public void DeleteOnScene(Node newParent)
+	public void DeleteOnScene(Node newParent, Node oldParent)
 	{
-		var parent = GetParent();
-		parent.RemoveChild(this);
+		oldParent.RemoveChild(this);
 		newParent.AddChild(this);
 	}
 }

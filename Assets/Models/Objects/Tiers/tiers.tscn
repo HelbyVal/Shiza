@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://nsankxl8a4qa"]
+
+[ext_resource type="PackedScene" uid="uid://8ibrfvbi1jy" path="res://Assets/Models/Objects/Tiers/tiers.glb" id="1_vo6j2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_px7sh"]
+size = Vector3(1.29199, 0.850342, 0.883301)
+
+[node name="Tiers" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_vo6j2")]
+transform = Transform3D(0.009, 0, 0, 0, 0.009, 0, 0, 0, 0.009, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.189941, 0.421021, -0.017334)
+shape = SubResource("BoxShape3D_px7sh")

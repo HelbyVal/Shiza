@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0a7m5268ysxc"]
+
+[ext_resource type="PackedScene" uid="uid://bn8okncyncmf2" path="res://Assets/Models/Objects/CartWithHay/stylized_medieval_cart_with_a_lamp_and_hay.glb" id="1_2twr7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ldthy"]
+size = Vector3(4.8847, 1.8634, 1.8623)
+
+[node name="CartWithHay" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_2twr7")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.845612, 0.949611, 0.0541992)
+shape = SubResource("BoxShape3D_ldthy")

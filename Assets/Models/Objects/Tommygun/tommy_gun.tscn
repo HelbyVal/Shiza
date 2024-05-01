@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://p5vqisd0rw68"]
+
+[ext_resource type="PackedScene" uid="uid://cn635mkjtc544" path="res://Assets/Models/Objects/Tommygun/tomy.glb" id="1_o7ac2"]
+
+[node name="TommyGun" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_o7ac2")]
