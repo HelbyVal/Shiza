@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfp3cl5jc41o1"]
+[gd_scene load_steps=10 format=3 uid="uid://dfp3cl5jc41o1"]
 
 [ext_resource type="Texture2D" uid="uid://tdifxkpi80cb" path="res://Scenes/2d/Icons/SideStreet.png" id="1_j2s83"]
 [ext_resource type="Script" path="res://Scenes/2d/Scripts/SideStreet.cs" id="1_ydgug"]
 [ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="3_ypimk"]
+[ext_resource type="PackedScene" uid="uid://cobusxbevqwqo" path="res://Characters/Rel.tscn" id="4_ob3ec"]
+[ext_resource type="PackedScene" uid="uid://dbun81il8jmoq" path="res://UI/dialog_ui.tscn" id="5_781ge"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3g606"]
 vertices = PackedVector2Array(1068, 721, 1488, 722, 1487, 722, 248, 722, 247, 722, 524, 718, 1812, 900, 103, 898, 105, 736, 1812, 751)
@@ -25,6 +27,10 @@ script = ExtResource("1_ydgug")
 [node name="SideStreet" type="Sprite2D" parent="."]
 position = Vector2(964, 505)
 texture = ExtResource("1_j2s83")
+
+[node name="Rel" parent="." instance=ExtResource("4_ob3ec")]
+position = Vector2(918, 713)
+scale = Vector2(0.977, 0.977)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_ypimk")]
 position = Vector2(186, 742)
@@ -52,6 +58,11 @@ position = Vector2(97, 496)
 shape = SubResource("RectangleShape2D_npqan")
 debug_color = Color(0.964706, 0.172549, 0.2, 0.419608)
 
+[node name="DialogUI" parent="." instance=ExtResource("5_781ge")]
+offset_top = -678.0
+offset_bottom = -678.0
+
+[connection signal="input_event" from="Rel/Area2D" to="." method="OnTaylerClickEvent"]
 [connection signal="mouse_entered" from="AreaFloor" to="." method="FloorMouseEntered"]
 [connection signal="mouse_exited" from="AreaFloor" to="." method="FloorMouseExited"]
 [connection signal="body_entered" from="CrossCityArea" to="." method="PlayerEnterOnCrossCity"]
@@ -62,3 +73,7 @@ debug_color = Color(0.964706, 0.172549, 0.2, 0.419608)
 [connection signal="input_event" from="MurderZoneWay" to="." method="ClickOnMurderZone"]
 [connection signal="mouse_entered" from="MurderZoneWay" to="." method="MurderZoneMouseEntered"]
 [connection signal="mouse_exited" from="MurderZoneWay" to="." method="MurderZoneMouseExited"]
+[connection signal="DialogFinished" from="DialogUI" to="." method="OnDialogFinished"]
+[connection signal="DialogStarted" from="DialogUI" to="." method="OnDialogStarted"]
+
+[editable path="Rel"]

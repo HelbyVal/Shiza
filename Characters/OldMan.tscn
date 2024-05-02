@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cq6v62jsp3nbf" path="res://Characters/Animation/OldMan/Idle/Idle5.png" id="5_npgdm"]
 [ext_resource type="Texture2D" uid="uid://fdps7ai2fwcb" path="res://Characters/Animation/OldMan/Run.png" id="7_ms8qa"]
 [ext_resource type="Texture2D" uid="uid://bo0qmladqcsmp" path="res://Characters/Animation/OldMan/Run2.png" id="8_n2nf4"]
+[ext_resource type="Script" path="res://Dialogs/Dialog.cs" id="7_xta46"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lroyo"]
 animations = [{
@@ -68,3 +69,7 @@ shape = SubResource("RectangleShape2D_gb7au")
 
 [connection signal="body_entered" from="Area2D" to="." method="BodyEntered"]
 [connection signal="input_event" from="Area2D" to="." method="ClickOnOldManItem"]
+[node name="IdleDialog" type="Node" parent="." node_paths=PackedStringArray("NextDialog")]
+script = ExtResource("7_xta46")
+DialogPath = "res://Dialogs/2d/5SarayWay/1ded.txt"
+NextDialog = NodePath(".")

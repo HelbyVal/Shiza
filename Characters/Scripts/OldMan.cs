@@ -4,10 +4,14 @@ using System;
 public partial class OldMan : Node2D
 {
 	public AnimatedSprite2D animatedSprite;
+	Dialog currentDialog;
+	character Player;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		currentDialog = GetNode<Dialog>("IdleDialog");
+		Player = GetNode<character>("Player");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,4 +46,9 @@ public partial class OldMan : Node2D
     }
 
 
+	public Dialog GetCurrentDialog(){
+        var curDialog = currentDialog;
+        currentDialog = currentDialog.NextDialog;
+        return curDialog;
+    }
 }

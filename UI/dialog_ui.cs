@@ -16,8 +16,7 @@ public partial class dialog_ui : Control
 	private List<Replica> _replicas = new List<Replica>();
 	private int _replicaCount;
 	private int _dialogCounter;
-	private bool _isFinished = false;
-	private bool _isStarted = false;
+	public bool IsStarted {get; private set;}
 	private Label _text;
 	private Label _owner;
 	// Called when the node enters the scene tree for the first time.
@@ -36,13 +35,16 @@ public partial class dialog_ui : Control
 
     public override void _Input(InputEvent @event)
     {
-        if (Input.IsActionJustPressed("mouse_click") && _isStarted){
+        if (Input.IsActionJustPressed("mouse_click") && IsStarted){
 			GetNextReplica();
 		}
     }
 
 
     public void StartDialog(Dialog dialog){
+		if(IsStarted){
+			return;	
+		}
 		_dialog = dialog;
 		using (FileStream fs = new FileStream(ProjectSettings.GlobalizePath(_dialog.DialogPath), FileMode.OpenOrCreate))
 		{
@@ -50,7 +52,7 @@ public partial class dialog_ui : Control
 		}
 		_replicaCount = _replicas.Count-1;
 		_dialogCounter = 0;
-		_isStarted = true;
+		IsStarted = true;
 		Visible = true;
 		GetNextReplica();
 		EmitSignal(SignalName.DialogStarted);
@@ -58,15 +60,13 @@ public partial class dialog_ui : Control
 
 	public void StopDialog(){
 		Visible = false;
-		_isStarted = false;
+		IsStarted = false;
 		EmitSignal(SignalName.DialogFinished);
 	}
 
 	public void GetNextReplica(){
 		if(_dialogCounter > _replicaCount){
-			_isFinished = true;
-			Visible = false;
-			EmitSignal(SignalName.DialogFinished);
+			StopDialog();
 			return;
 		}
 		_owner.Text = _replicas[_dialogCounter].Owner;

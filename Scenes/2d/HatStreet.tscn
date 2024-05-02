@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl1h01sxqx7h5"]
+[gd_scene load_steps=9 format=3 uid="uid://cl1h01sxqx7h5"]
 
 [ext_resource type="Script" path="res://Scenes/2d/Scripts/HatStreet.cs" id="1_41meu"]
 [ext_resource type="Texture2D" uid="uid://dhdyujhm5qark" path="res://Scenes/2d/Icons/HatStreet.png" id="2_bo8eb"]
 [ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="3_2iph0"]
-[ext_resource type="PackedScene" uid="uid://bmdbmwbgewbes" path="res://Items/Trash.tscn" id="4_37ddx"]
+[ext_resource type="PackedScene" path="res://Items/Trash.tscn" id="4_37ddx"]
+[ext_resource type="PackedScene" uid="uid://cobusxbevqwqo" path="res://Characters/Rel.tscn" id="5_t5xej"]
+[ext_resource type="PackedScene" uid="uid://dbun81il8jmoq" path="res://UI/dialog_ui.tscn" id="6_ctek3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lh2p"]
 size = Vector2(65.125, 886.813)
@@ -20,6 +22,9 @@ script = ExtResource("1_41meu")
 [node name="HatStreet" type="Sprite2D" parent="."]
 position = Vector2(958, 494)
 texture = ExtResource("2_bo8eb")
+
+[node name="Rel" parent="." instance=ExtResource("5_t5xej")]
+position = Vector2(169, 715)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_2iph0")]
 position = Vector2(1691, 785)
@@ -42,9 +47,20 @@ polygon = PackedVector2Array(272, 666, 370, 798, 806, 791, 806, 666, 1812, 676, 
 [node name="Trash" parent="." instance=ExtResource("4_37ddx")]
 position = Vector2(551, 593)
 
+[node name="DialogUI" parent="." instance=ExtResource("6_ctek3")]
+offset_left = -25.0
+offset_top = -676.0
+offset_right = -25.0
+offset_bottom = -676.0
+
+[connection signal="input_event" from="Rel/Area2D" to="." method="OnTaylerClickEvent"]
 [connection signal="body_entered" from="CrossCityArea" to="." method="PlayerEnterOnCrossCity"]
 [connection signal="input_event" from="CrossCityArea" to="." method="ClickOnCrossCity"]
 [connection signal="mouse_entered" from="CrossCityArea" to="." method="CrossCityMouseEntered"]
 [connection signal="mouse_exited" from="CrossCityArea" to="." method="CrossCityMouseExited"]
 [connection signal="mouse_entered" from="AreaFloor" to="." method="FloorMouseEntered"]
 [connection signal="mouse_exited" from="AreaFloor" to="." method="FloorMouseExited"]
+[connection signal="DialogFinished" from="DialogUI" to="." method="OnDialogFinished"]
+[connection signal="DialogStarted" from="DialogUI" to="." method="OnDialogStarted"]
+
+[editable path="Rel"]

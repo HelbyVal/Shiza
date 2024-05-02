@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3losi7iioreb"]
+[gd_scene load_steps=9 format=3 uid="uid://c3losi7iioreb"]
 
 [ext_resource type="Script" path="res://Scenes/2d/Scripts/CrossCity.cs" id="1_qdv55"]
 [ext_resource type="Texture2D" uid="uid://creekocli7n8d" path="res://Scenes/2d/Icons/CrossSity.png" id="2_6sqym"]
 [ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="3_0lhmj"]
+[ext_resource type="PackedScene" uid="uid://cobusxbevqwqo" path="res://Characters/Rel.tscn" id="4_5b3m2"]
+[ext_resource type="PackedScene" uid="uid://dbun81il8jmoq" path="res://UI/dialog_ui.tscn" id="5_srbvj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3g606"]
 vertices = PackedVector2Array(1296, 538, 1333, 561, 1195, 582, 1135, 555, 1869, 701, 1876, 927, 90, 930, 1373, 712, 1294, 692, 923, 536, 1050, 531, 1192, 594, 515, 681, 90, 684, 247, 682, 659, 562, 764, 531, 682, 530)
@@ -22,6 +24,10 @@ script = ExtResource("1_qdv55")
 [node name="CrossStreet" type="Sprite2D" parent="."]
 position = Vector2(964, 505)
 texture = ExtResource("2_6sqym")
+
+[node name="Rel" parent="." instance=ExtResource("4_5b3m2")]
+position = Vector2(335, 676)
+scale = Vector2(0.574, 0.572)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_0lhmj")]
 position = Vector2(186, 742)
@@ -55,6 +61,13 @@ position = Vector2(1852, 805)
 shape = SubResource("RectangleShape2D_npqan")
 debug_color = Color(0.964706, 0.172549, 0.2, 0.419608)
 
+[node name="DialogUI" parent="." instance=ExtResource("5_srbvj")]
+offset_left = -21.0
+offset_top = -607.0
+offset_right = -21.0
+offset_bottom = -607.0
+
+[connection signal="input_event" from="Rel/Area2D" to="." method="OnTaylerClickEvent"]
 [connection signal="mouse_entered" from="AreaFloor" to="." method="FloorMouseEntered"]
 [connection signal="mouse_exited" from="AreaFloor" to="." method="FloorMouseExited"]
 [connection signal="body_entered" from="SideStreetWay" to="." method="PlayerEnterOnSideStreet"]
@@ -69,3 +82,7 @@ debug_color = Color(0.964706, 0.172549, 0.2, 0.419608)
 [connection signal="input_event" from="SarayWay" to="." method="ClickOnSarayWay"]
 [connection signal="mouse_entered" from="SarayWay" to="." method="CrossCityMouseEntered"]
 [connection signal="mouse_exited" from="SarayWay" to="." method="CrossCityMouseExited"]
+[connection signal="DialogFinished" from="DialogUI" to="." method="OnDialogFinished"]
+[connection signal="DialogStarted" from="DialogUI" to="." method="OnDialogStarted"]
+
+[editable path="Rel"]

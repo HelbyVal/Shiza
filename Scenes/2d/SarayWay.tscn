@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="3_3e6fc"]
 [ext_resource type="PackedScene" uid="uid://3hx7g7bf1vsp" path="res://Characters/Dog.tscn" id="4_1rl0d"]
 [ext_resource type="PackedScene" uid="uid://dtu5e2i6pi72m" path="res://Characters/OldMan.tscn" id="4_5utv2"]
+[ext_resource type="PackedScene" uid="uid://dbun81il8jmoq" path="res://UI/dialog_ui.tscn" id="5_taoi7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lh2p"]
 size = Vector2(65.125, 381.625)
@@ -87,11 +88,20 @@ libraries = {
 "": SubResource("AnimationLibrary_paatt")
 }
 
+[node name="DialogUI" parent="." instance=ExtResource("5_taoi7")]
+offset_left = 4.0
+offset_top = -640.0
+offset_right = 4.0
+offset_bottom = -640.0
+
+[connection signal="input_event" from="OldMan/Area2D" to="." method="OnDedClickEvent"]
 [connection signal="body_entered" from="CrossCityArea" to="." method="PlayerEnterOnCrossCity"]
 [connection signal="input_event" from="CrossCityArea" to="." method="ClickOnCrossCity"]
 [connection signal="mouse_entered" from="CrossCityArea" to="." method="CrossCityMouseEntered"]
 [connection signal="mouse_exited" from="CrossCityArea" to="." method="CrossCityMouseExited"]
 [connection signal="mouse_entered" from="AreaFloor" to="." method="FloorMouseEntered"]
 [connection signal="mouse_exited" from="AreaFloor" to="." method="FloorMouseExited"]
+[connection signal="DialogFinished" from="DialogUI" to="." method="OnDialogFinished"]
+[connection signal="DialogStarted" from="DialogUI" to="." method="OnDialogFinished"]
 
 [editable path="OldMan"]
