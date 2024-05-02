@@ -10,6 +10,7 @@ public partial class RottenMeat : BaseItem
 		ItemName = "RottenMeat";
 		var oldMan = GetNode<OldMan>("res://Characters/OldMan.tscn");
 		InteractNode = oldMan;
+        Hide();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,15 +20,17 @@ public partial class RottenMeat : BaseItem
 
     public override void Pickup()
     {
-        var scene = GetParent().GetParent();
+        var sc = GetParent();
+        var scene = sc.GetParent();
         var parent = (Game)scene.GetParent();
         UI ui = parent.GetNode<UI>("Ui");
         if (ui.InsertItem(this))
         {
             SetIsDroped = false;
             //Global.ChangeMouse(Global.PreviousModeCursor);
-            DeleteOnScene(ui, scene);
+            DeleteOnScene(ui, sc);
+            var res = GetParent();
         }
-        Visible = true;
+        Show();
     }
 }

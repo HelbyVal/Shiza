@@ -5,7 +5,7 @@ public partial class character : CharacterBody2D
 {
 	private NavigationAgent2D navigationAgent;
 	private CollisionShape2D collisionShape;
-	public const float Speed = 350.0f;
+	public const float Speed = 500.0f;
 	public float ChangeScale = 0.005f;
 	public const float MinimumScale = 0.4f;
 	Vector2 click_position = new Vector2();
@@ -38,7 +38,7 @@ public partial class character : CharacterBody2D
     public override void _PhysicsProcess(double delta)
 	{
 		if(!isMovementOn){
-			return;
+            return;
 		}
 
 		if (action == CharacterAction.Pickup)
@@ -137,7 +137,8 @@ public partial class character : CharacterBody2D
 	{
 		Idle,
 		Walk,
-		Pickup
+		Pickup,
+		Use
 	}
 
 	public void FrameChanged()
@@ -152,11 +153,35 @@ public partial class character : CharacterBody2D
             picking = false;
 			PickupItem = null;
         }
-	}
+
+        if (action == CharacterAction.Use && animatedSprite.Frame == 7)
+        {
+            if (PickupItem != null)
+            {
+                PickupItem.Use();
+            }
+            ChangeAnimation(CharacterAction.Idle);
+            picking = false;
+            PickupItem = null;
+        }
+    }
+
+	public void ActivateUse(BaseItem item)
+	{
+		PickupItem = item;
+		picking = true;
+    }
+
+	public void UseItem()
+	{
+		action = CharacterAction.Use;
+
+    }
 
 	public void DisableMovement(){
 		isMovementOn = false;
-	}
+        ChangeAnimation(CharacterAction.Idle);
+    }
 
 	public void EnableMovement(){
 		isMovementOn = true;

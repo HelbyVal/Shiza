@@ -16,7 +16,7 @@ shape = SubResource("RectangleShape2D_sk2lw")
 debug_color = Color(0.756863, 0.184314, 1, 0.419608)
 
 [node name="RottenMeat" parent="." instance=ExtResource("2_7emls")]
-visible = false
 
 [connection signal="body_entered" from="Area2D" to="." method="PlayerEntered"]
 [connection signal="input_event" from="Area2D" to="." method="ClickOnTrash"]
+[connection signal="mouse_entered" from="Area2D" to="." method="MouseEnteredInTrash"]

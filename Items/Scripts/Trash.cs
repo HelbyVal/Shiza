@@ -6,16 +6,22 @@ public partial class Trash : Node2D
 	// Called when the node enters the scene tree for the first time.
 	BaseItem PickableItem;
     bool active = true;
+    Global Global;
 	public override void _Ready()
 	{
 		PickableItem = GetNode<RottenMeat>("RottenMeat");
-	}
+        Global = GetNode<Global>("/root/Global");
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 	}
 
+    public void MouseEnteredInTrash()
+    {
+        Global.MouseEnteredInFloor = false;
+    }
     public void ClickOnTrash(Node viewport, InputEvent e, int shape_idx)
 	{
         if (e.IsActionPressed("mouse_click") && active)

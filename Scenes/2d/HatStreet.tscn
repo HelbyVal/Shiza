@@ -14,7 +14,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(270, 664, 98, 664, 95, 895, 1835, 891, 1812, 678, 802, 668, 806, 797, 372, 797)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
-[node name="SarayWay" type="Node2D"]
+[node name="HatStreet" type="Node2D"]
 script = ExtResource("1_41meu")
 
 [node name="HatStreet" type="Sprite2D" parent="."]

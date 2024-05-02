@@ -70,6 +70,35 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.2,
+"texture": ExtResource("7_0y6s8")
+}, {
+"duration": 1.2,
+"texture": ExtResource("8_ajdpq")
+}, {
+"duration": 1.2,
+"texture": ExtResource("9_418ac")
+}, {
+"duration": 1.2,
+"texture": ExtResource("10_stwi5")
+}, {
+"duration": 1.2,
+"texture": ExtResource("11_avd4u")
+}, {
+"duration": 1.2,
+"texture": ExtResource("12_bpjrb")
+}, {
+"duration": 1.2,
+"texture": ExtResource("13_ydsmu")
+}, {
+"duration": 1.2,
+"texture": ExtResource("13_ydsmu")
+}],
+"loop": true,
+"name": &"Use",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 0.5,
 "texture": ExtResource("7_b2vyc")
 }, {
@@ -98,8 +127,7 @@ script = ExtResource("1_gxmgi")
 position = Vector2(0, -100)
 scale = Vector2(1.575, 1.575)
 sprite_frames = SubResource("SpriteFrames_hwmk1")
-animation = &"Pickup"
-frame_progress = 0.443896
+animation = &"Use"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 

@@ -63,6 +63,5 @@ offset_bottom = -678.0
 [connection signal="mouse_shape_entered" from="Area2D" to="." method="OnFloorMouseShapeEntered"]
 [connection signal="input_event" from="Rel/Area2D" to="." method="OnTaylerClickEvent"]
 [connection signal="DialogFinished" from="DialogUI" to="." method="OnDialogFinished"]
-[connection signal="DialogStarted" from="DialogUI" to="." method="OnDialogStarted"]
 
 [editable path="Rel"]

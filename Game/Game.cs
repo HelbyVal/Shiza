@@ -28,4 +28,13 @@ public partial class Game : Node2D
 		newScene.MoveCharacter(CharPos, Scale);
         AddChild(Global.UI);
     }
+
+	public void ActivateScriptOldManDoner()
+	{
+		var scene = GetNode<SarayWay>("SarayWay");
+		var animation = scene.GetNode<AnimationPlayer>("AnimationPlayer");
+		var ded = scene.GetNode<OldMan>("OldMan");
+		ded.animatedSprite.Play("Run");
+        animation.Play("DogVSOldMan");
+    }
 }

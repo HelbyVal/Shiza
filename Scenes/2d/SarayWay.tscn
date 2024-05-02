@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://74eunirr0u47"]
+[gd_scene load_steps=10 format=3 uid="uid://74eunirr0u47"]
 
 [ext_resource type="Script" path="res://Scenes/2d/Scripts/SarayWay.cs" id="1_6xfx7"]
 [ext_resource type="Texture2D" uid="uid://cfdisftchy5xf" path="res://Scenes/2d/Icons/SarayWay.png" id="2_ihqsv"]
 [ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="3_3e6fc"]
+[ext_resource type="PackedScene" uid="uid://3hx7g7bf1vsp" path="res://Characters/Dog.tscn" id="4_1rl0d"]
 [ext_resource type="PackedScene" uid="uid://dtu5e2i6pi72m" path="res://Characters/OldMan.tscn" id="4_5utv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lh2p"]
@@ -14,6 +15,39 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(
 outlines = Array[PackedVector2Array]([PackedVector2Array(106, 627, 84, 895, 1698.4, 858.588, 1508.79, 751.265, 1495.61, 773.331, 1387.11, 773.331, 1319.18, 722.177, 1250.23, 653.972, 1048, 633, 482, 621)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
+[sub_resource type="Animation" id="Animation_mm8yw"]
+resource_name = "DogVSOldMan"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dog:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.5, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-168, 718), Vector2(1203, 701), Vector2(1930, 1154)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OldMan:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1417, 754), Vector2(2000, 1371)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_paatt"]
+_data = {
+"DogVSOldMan": SubResource("Animation_mm8yw")
+}
+
 [node name="SarayWay" type="Node2D"]
 script = ExtResource("1_6xfx7")
 
@@ -23,6 +57,9 @@ texture = ExtResource("2_ihqsv")
 
 [node name="OldMan" parent="." instance=ExtResource("4_5utv2")]
 position = Vector2(1417, 754)
+
+[node name="Dog" parent="." instance=ExtResource("4_1rl0d")]
+position = Vector2(-168, 718)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_3e6fc")]
 position = Vector2(186, 742)
@@ -43,7 +80,12 @@ navigation_polygon = SubResource("NavigationPolygon_3g606")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AreaFloor"]
 position = Vector2(4, 5)
 scale = Vector2(0.950646, 1)
-polygon = PackedVector2Array(110, 631, 510, 633, 992, 641, 1372.75, 645, 1717.78, 843, 98, 882)
+polygon = PackedVector2Array(110, 631, 510, 633, 992, 641, 1308.35, 644.323, 1372.75, 645, 1717.78, 843, 98, 882)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_paatt")
+}
 
 [connection signal="body_entered" from="CrossCityArea" to="." method="PlayerEnterOnCrossCity"]
 [connection signal="input_event" from="CrossCityArea" to="." method="ClickOnCrossCity"]
@@ -51,3 +93,5 @@ polygon = PackedVector2Array(110, 631, 510, 633, 992, 641, 1372.75, 645, 1717.78
 [connection signal="mouse_exited" from="CrossCityArea" to="." method="CrossCityMouseExited"]
 [connection signal="mouse_entered" from="AreaFloor" to="." method="FloorMouseEntered"]
 [connection signal="mouse_exited" from="AreaFloor" to="." method="FloorMouseExited"]
+
+[editable path="OldMan"]

@@ -1,4 +1,5 @@
 using Godot;
+using Shiza.Scripts;
 using System;
 
 public partial class BaseItem : Node2D
@@ -60,18 +61,35 @@ public partial class BaseItem : Node2D
 	{
 		if (e.IsActionPressed("mouse_click"))
 		{
+			var parent = GetParent();
 			if (isDroped)
 			{
-				var parent = GetParent();
-				if (parent is first_scena)
+				if (parent is IChar)
 				{
-					var scene = (first_scena)parent;
+					var scene = (Node2D)parent;
 					var person = scene.GetNode<character>("CharacterBody2D");
 					person.MoveToItem(this.Position);
 				}
 			}
+			else
+			{
+				var par = (Game)parent.GetParent();
+				par.ActivateScriptOldManDoner();
+				//var sce = par.GetNode<SarayWay>("SarayWay");
+    //            var person = sce.GetNode<character>("CharacterBody2D");
+				//person.ActivateUse(this);
+            }
 		}
 	}
+
+	public void Use()
+	{
+        var scene = GetParent();
+        var parent = (Game)scene.GetParent();
+        UI ui = parent.GetNode<UI>("Ui");
+		ui.RemoveChild(this);
+		parent.ActivateScriptOldManDoner();
+    }
 	
 	public void DeleteOnScene(Node newParent, Node oldParent)
 	{
