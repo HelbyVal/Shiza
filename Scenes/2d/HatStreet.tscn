@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/2d/Scripts/HatStreet.cs" id="1_41meu"]
 [ext_resource type="Texture2D" uid="uid://dhdyujhm5qark" path="res://Scenes/2d/Icons/HatStreet.png" id="2_bo8eb"]
 [ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="3_2iph0"]
-[ext_resource type="PackedScene" path="res://Items/Trash.tscn" id="4_37ddx"]
+[ext_resource type="PackedScene" uid="uid://bmdbmwbgewbes" path="res://Items/Trash.tscn" id="4_37ddx"]
 [ext_resource type="PackedScene" uid="uid://cobusxbevqwqo" path="res://Characters/Rel.tscn" id="5_t5xej"]
 [ext_resource type="PackedScene" uid="uid://dbun81il8jmoq" path="res://UI/dialog_ui.tscn" id="6_ctek3"]
 

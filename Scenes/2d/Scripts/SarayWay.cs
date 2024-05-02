@@ -84,4 +84,13 @@ public partial class SarayWay : Node2D, IChar
     private void OnDialogFinished(){
         Player.EnableMovement();
     }
+
+    public void PlayerEnteredOnFlashBack(Node2D body)
+    {
+        if (body is character player)
+        {
+            GetTree().ChangeSceneToFile("Scenes/3d/FlashBackScenes/FlashBack1.tscn");
+        }
+    }
+
 }

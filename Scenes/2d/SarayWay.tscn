@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://74eunirr0u47"]
+[gd_scene load_steps=12 format=3 uid="uid://74eunirr0u47"]
 
 [ext_resource type="Script" path="res://Scenes/2d/Scripts/SarayWay.cs" id="1_6xfx7"]
 [ext_resource type="Texture2D" uid="uid://cfdisftchy5xf" path="res://Scenes/2d/Icons/SarayWay.png" id="2_ihqsv"]
 [ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="3_3e6fc"]
-[ext_resource type="PackedScene" path="res://Characters/Dog.tscn" id="4_1rl0d"]
+[ext_resource type="PackedScene" uid="uid://3hx7g7bf1vsp" path="res://Characters/Dog.tscn" id="4_1rl0d"]
 [ext_resource type="PackedScene" uid="uid://cw65bf5tuhh8a" path="res://Characters/OldMan.tscn" id="4_5utv2"]
 [ext_resource type="PackedScene" uid="uid://dbun81il8jmoq" path="res://UI/dialog_ui.tscn" id="5_taoi7"]
 
@@ -48,6 +48,9 @@ tracks/1/keys = {
 _data = {
 "DogVSOldMan": SubResource("Animation_mm8yw")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6jyn"]
+size = Vector2(342.5, 417)
 
 [node name="SarayWay" type="Node2D"]
 script = ExtResource("1_6xfx7")
@@ -94,6 +97,13 @@ offset_top = -640.0
 offset_right = 4.0
 offset_bottom = -640.0
 
+[node name="FlashBackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlashBackArea"]
+position = Vector2(1561, 618)
+shape = SubResource("RectangleShape2D_s6jyn")
+debug_color = Color(0.0666667, 0.0941176, 0.0470588, 0.419608)
+
 [connection signal="input_event" from="OldMan/Area2D" to="." method="OnDedClickEvent"]
 [connection signal="body_entered" from="CrossCityArea" to="." method="PlayerEnterOnCrossCity"]
 [connection signal="input_event" from="CrossCityArea" to="." method="ClickOnCrossCity"]
@@ -103,5 +113,6 @@ offset_bottom = -640.0
 [connection signal="mouse_exited" from="AreaFloor" to="." method="FloorMouseExited"]
 [connection signal="DialogFinished" from="DialogUI" to="." method="OnDialogFinished"]
 [connection signal="DialogStarted" from="DialogUI" to="." method="OnDialogFinished"]
+[connection signal="body_entered" from="FlashBackArea" to="." method="PlayerEnteredOnFlashBack"]
 
 [editable path="OldMan"]
