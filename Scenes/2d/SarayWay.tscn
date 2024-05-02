@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://74eunirr0u47"]
+[gd_scene load_steps=11 format=3 uid="uid://74eunirr0u47"]
 
 [ext_resource type="Script" path="res://Scenes/2d/Scripts/SarayWay.cs" id="1_6xfx7"]
 [ext_resource type="Texture2D" uid="uid://cfdisftchy5xf" path="res://Scenes/2d/Icons/SarayWay.png" id="2_ihqsv"]
 [ext_resource type="PackedScene" uid="uid://cl4ipq27x8dta" path="res://Characters/character.tscn" id="3_3e6fc"]
-[ext_resource type="PackedScene" uid="uid://3hx7g7bf1vsp" path="res://Characters/Dog.tscn" id="4_1rl0d"]
-[ext_resource type="PackedScene" uid="uid://dtu5e2i6pi72m" path="res://Characters/OldMan.tscn" id="4_5utv2"]
+[ext_resource type="PackedScene" path="res://Characters/Dog.tscn" id="4_1rl0d"]
+[ext_resource type="PackedScene" uid="uid://cw65bf5tuhh8a" path="res://Characters/OldMan.tscn" id="4_5utv2"]
 [ext_resource type="PackedScene" uid="uid://dbun81il8jmoq" path="res://UI/dialog_ui.tscn" id="5_taoi7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lh2p"]
