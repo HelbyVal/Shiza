@@ -7,7 +7,7 @@ public partial class Player3D : CharacterBody3D
 	 public delegate void RotationFinishedEventHandler();
 	//Приветик
 	[Export]
-	public float Speed = 5.0f;
+	public float Speed = 2.0f;
 	public const float JumpVelocity = 4.5f;
 	public const float RotationSpeed = 0.02f;
 	private float cameraLimitUp = Godot.Mathf.DegToRad(60);

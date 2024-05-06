@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw0v887ab76lg"]
+
+[ext_resource type="PackedScene" uid="uid://bcaqh810u3w28" path="res://Assets/Models/Objects/House/house_model.tscn" id="1_io0bv"]
+[ext_resource type="PackedScene" uid="uid://dygh742r24ixw" path="res://Assets/Models/Objects/House/door_model.tscn" id="2_yhadj"]
+
+[node name="House" type="Node3D"]
+
+[node name="house" parent="." instance=ExtResource("1_io0bv")]
+
+[node name="DoorModel" parent="." instance=ExtResource("2_yhadj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.909, 0.347, 1.597)

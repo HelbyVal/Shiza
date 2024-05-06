@@ -5,7 +5,7 @@ public partial class character : CharacterBody2D
 {
 	private NavigationAgent2D navigationAgent;
 	private CollisionShape2D collisionShape;
-	public const float Speed = 500.0f;
+	public const float Speed = 350.0f;
 	public float ChangeScale = 0.005f;
 	public const float MinimumScale = 0.4f;
 	Vector2 click_position = new Vector2();
