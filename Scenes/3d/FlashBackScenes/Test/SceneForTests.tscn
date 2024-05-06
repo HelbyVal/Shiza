@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfnrgjidtyn4w"]
+
+[ext_resource type="Material" uid="uid://mhgutjltmany" path="res://Assets/Textures/Grass.tres" id="1_an1w3"]
+[ext_resource type="PackedScene" uid="uid://b54jc1gruwssq" path="res://Scenes/3d/Player3D.tscn" id="1_jvt31"]
+[ext_resource type="PackedScene" uid="uid://b706kq5t3odrd" path="res://TestItem.tscn" id="3_08c14"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wndm6"]
+material = ExtResource("1_an1w3")
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_148dw"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c3uxs"]
+size = Vector3(0.165, 0.29, 0.18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hsps0"]
+size = Vector3(0.165, 0.29, 0.18)
+
+[node name="SceneForTests" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_wndm6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_148dw")
+
+[node name="Player" parent="." instance=ExtResource("1_jvt31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.148707, 0, -3.12873)
+Speed = 5.0
+
+[node name="TestItem" parent="." instance=ExtResource("3_08c14")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.68974, 0)
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.11196, 0.975, 0)
+visible = false
+collision_layer = 16385
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D2"]
+shape = SubResource("BoxShape3D_c3uxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
+mesh = SubResource("BoxMesh_hsps0")
+skeleton = NodePath("")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 31.6306, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.0871558, 0, 0.996195, 0, 1, 0, -0.996195, 0, 0.0871558, 2.433, 1.541, -0.95)
+fov = 89.8

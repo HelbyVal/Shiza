@@ -17,6 +17,8 @@ public partial class Player3D : CharacterBody3D
 	private Camera3D camera;
 	private Timer _stepTimer;
 	private AudioStreamPlayer _stepAudio;
+	private RayCast3D _rayCast;
+	private Marker3D _itemPosition;
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 	private bool isMovementOn = true;
@@ -26,14 +28,19 @@ public partial class Player3D : CharacterBody3D
 	private float degreeTarget;
 	private float cameraDegreeTarget;
 
+	private Item _currentItem;
+
     public override void _Ready()
     {
     	camera = GetNode<Camera3D>("Camera3D");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		mouseSens = GetNode<Global>("/root/Global").MouseSens;
-		GetNode<MeshInstance3D>("BodyMesh").Visible = false;
+		//GetNode<MeshInstance3D>("BodyMesh").Visible = false;
 		_stepAudio = GetNode<AudioStreamPlayer>("StepAudio");
 		_stepTimer = GetNode<Timer>("StepTimer");
+		_rayCast = GetNode<RayCast3D>("Camera3D/RayCast3D");
+		_rayCast.Enabled = true;
+		_itemPosition = GetNode<Marker3D>("Camera3D/Marker3D");
     }
 
     public override void _Process(double delta)
@@ -57,6 +64,26 @@ public partial class Player3D : CharacterBody3D
 
     public override void _PhysicsProcess(double delta)
 	{
+		if(Input.IsActionJustPressed("use")){
+			if(_rayCast.IsColliding()){
+				GD.Print("Taken!");
+				_currentItem = (Item)_rayCast.GetCollider();
+				_currentItem.Take();
+			}
+		}
+		if(Input.IsActionJustReleased("use")){
+			GD.Print("Droped!");
+			_currentItem.Drop(delta);
+			_currentItem = null;
+		}
+		if(_currentItem != null){
+			_currentItem.MoveOnPosition(_itemPosition.GlobalPosition);
+		}
+		// if( && ){
+		// 	var a = ;
+		// 	a.MoveOnPosition(_itemPosition.GlobalPosition);
+		// 	//obj.MoveOnPosition(_itemPosition.Position);
+		// }
 		if(isMovementOn){
 			Movement(delta);
 		}

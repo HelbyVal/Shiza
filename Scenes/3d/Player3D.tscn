@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b54jc1gruwssq"]
+[gd_scene load_steps=6 format=3 uid="uid://b54jc1gruwssq"]
 
 [ext_resource type="Script" path="res://Scenes/3d/Player3D.cs" id="1_fkojv"]
 [ext_resource type="AudioStream" uid="uid://cp8mnn51vbkkd" path="res://Assets/Audio/grassStep2.mp3" id="2_ehhmv"]
+[ext_resource type="PackedScene" uid="uid://r1e8kgla7gwe" path="res://UI/UI_3D.tscn" id="3_hhwg3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yetxs"]
 radius = 0.595329
@@ -19,6 +20,16 @@ shape = SubResource("CapsuleShape3D_yetxs")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.59495, 0.0604538)
 
+[node name="Marker3D" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.47592e-07, 0.00188005, -1.68826)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -1.69, 0)
+collision_mask = 16384
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
 [node name="BodyMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07242, 0)
 mesh = SubResource("CapsuleMesh_ivip4")
@@ -31,3 +42,5 @@ autostart = true
 [node name="StepAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ehhmv")
 volume_db = -32.686
+
+[node name="Ui3d" parent="." instance=ExtResource("3_hhwg3")]
