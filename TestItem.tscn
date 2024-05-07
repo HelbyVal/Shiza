@@ -2,22 +2,19 @@
 
 [ext_resource type="Script" path="res://Scenes/3d/FlashBackScenes/Test/Item.cs" id="1_xo00i"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_c3uxs"]
-size = Vector3(0.165, 0.29, 0.18)
+[sub_resource type="BoxShape3D" id="BoxShape3D_c351w"]
+size = Vector3(0.29, 0.52, 0.19)
 
-[sub_resource type="BoxMesh" id="BoxMesh_hsps0"]
-size = Vector3(0.165, 0.29, 0.18)
+[sub_resource type="BoxMesh" id="BoxMesh_lr7by"]
+size = Vector3(0.29, 0.52, 0.19)
 
 [node name="Item" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.975, 0)
 collision_layer = 16385
 script = ExtResource("1_xo00i")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-shape = SubResource("BoxShape3D_c3uxs")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_c351w")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-mesh = SubResource("BoxMesh_hsps0")
-skeleton = NodePath("")
+mesh = SubResource("BoxMesh_lr7by")

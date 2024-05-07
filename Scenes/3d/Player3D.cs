@@ -68,7 +68,7 @@ public partial class Player3D : CharacterBody3D
 			if(_rayCast.IsColliding()){
 				
 				_currentItem = (Item)_rayCast.GetCollider();
-				_currentItem.Take();
+				_currentItem.Take(camera);
 			}
 		}
 		if(Input.IsActionJustReleased("use")){
@@ -115,6 +115,7 @@ public partial class Player3D : CharacterBody3D
 			_stepTimer.Start();
 		}
 
+		//GD.Print("Velocity: ", Velocity);
 		Velocity = velocity;
 		MoveAndSlide();
 	}
