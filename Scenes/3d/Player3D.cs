@@ -66,13 +66,13 @@ public partial class Player3D : CharacterBody3D
 	{
 		if(Input.IsActionJustPressed("use")){
 			if(_rayCast.IsColliding()){
-				GD.Print("Taken!");
+				
 				_currentItem = (Item)_rayCast.GetCollider();
 				_currentItem.Take();
 			}
 		}
 		if(Input.IsActionJustReleased("use")){
-			GD.Print("Droped!");
+			
 			_currentItem.Drop(delta);
 			_currentItem = null;
 		}

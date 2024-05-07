@@ -16,40 +16,36 @@ public abstract partial class PickableItem3D: RigidBody3D
     }
 
     public void Take(){
+        GD.Print("Taken!");
         _isTaken = true;
+        Freeze = true;
+        //Sleeping = true;
     }
 
     public void Drop(double delta){
+        GD.Print("Droped!");
         _isTaken = false;
         SetInertia(delta);
+        //Sleeping = false;
+        Freeze = false;
     }
 
     private void SetInertia(double delta){
-        // var iner = _prevPoint.DirectionTo(GlobalPosition) * (_prevPoint.DistanceTo(GlobalPosition) / (float)delta);
-        // LinearVelocity = iner/2;
+        var iner = _prevPoint.DirectionTo(GlobalPosition) * (_prevPoint.DistanceTo(GlobalPosition) / (float)delta);
+        //Inertia = new Vector3(Mathf.Log(iner.X), Mathf.Log(iner.Y)+(float)9.7, Mathf.Log(iner.Z));
+        //Inertia = iner;
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        if (_isTaken)
+        GD.Print(LinearVelocity);
+        if (_isTaken && Freeze)
         {
 			var dist = this.GlobalPosition.DistanceTo(_target);
             var dir = this.GlobalPosition.DirectionTo(_target).Normalized();
             _prevPoint = GlobalPosition;
-            //LinearVelocity = new Vector3(0,-1,0);
             MoveAndCollide(dir * dist);
         }
-        // GD.Print("Curren position: ", GlobalPosition);
-        // GD.Print("Prev position: ", _prevPoint);
-        // GD.Print("DirectionTo: ", _prevPoint.DirectionTo(GlobalPosition));
-        // GD.Print("DistanceTo: ", _prevPoint.DistanceTo(GlobalPosition));
-        // GD.Print("delta: ", delta);
-        // GD.Print("prev velocity: ", LinearVelocity);
-        // //var t = (float)delta * (float)1;
-        // //LinearVelocity = _prevPoint.DirectionTo(GlobalPosition) * (_prevPoint.DistanceTo(GlobalPosition) / (t));
-        // //_prevPoint = GlobalPosition;
-        // GD.Print("current velocity: ", LinearVelocity);
-        // GD.Print("-------------------------");
     }
 }
 

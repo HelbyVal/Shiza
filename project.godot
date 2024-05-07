@@ -85,3 +85,7 @@ use={
 
 3d_physics/layer_10="GroundGrass"
 3d_physics/layer_15="RayCastPlayer"
+
+[physics]
+
+common/physics_ticks_per_second=144

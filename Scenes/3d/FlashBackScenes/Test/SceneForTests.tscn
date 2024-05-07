@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfnrgjidtyn4w"]
+[gd_scene load_steps=9 format=3 uid="uid://bfnrgjidtyn4w"]
 
 [ext_resource type="Material" uid="uid://mhgutjltmany" path="res://Assets/Textures/Grass.tres" id="1_an1w3"]
 [ext_resource type="PackedScene" uid="uid://b54jc1gruwssq" path="res://Scenes/3d/Player3D.tscn" id="1_jvt31"]
@@ -10,6 +10,8 @@ size = Vector2(100, 100)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_148dw"]
 data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r2i6j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c3uxs"]
 size = Vector3(0.165, 0.29, 0.18)
@@ -33,6 +35,7 @@ Speed = 5.0
 
 [node name="TestItem" parent="." instance=ExtResource("3_08c14")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.68974, 0)
+physics_material_override = SubResource("PhysicsMaterial_r2i6j")
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.11196, 0.975, 0)
