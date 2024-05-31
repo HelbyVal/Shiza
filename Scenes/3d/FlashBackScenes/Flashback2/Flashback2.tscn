@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dja5suwq8swna"]
+[gd_scene load_steps=13 format=3 uid="uid://dja5suwq8swna"]
 
 [ext_resource type="Texture2D" uid="uid://iq4imm3nt8n" path="res://Assets/Textures/skyboxv2.png" id="1_7eor8"]
 [ext_resource type="Material" uid="uid://mhgutjltmany" path="res://Assets/Textures/Grass.tres" id="2_1neil"]
 [ext_resource type="PackedScene" uid="uid://b54jc1gruwssq" path="res://Scenes/3d/Player3D.tscn" id="3_g40f8"]
 [ext_resource type="PackedScene" uid="uid://cw0v887ab76lg" path="res://Assets/Models/Objects/House/house.tscn" id="4_5afhl"]
+[ext_resource type="PackedScene" uid="uid://b706kq5t3odrd" path="res://TestItem.tscn" id="5_fcxdx"]
+[ext_resource type="PackedScene" uid="uid://d04k2rkf5ltkk" path="res://Assets/Models/Characters/Father/Father.tscn" id="6_k3kod"]
+[ext_resource type="PackedScene" uid="uid://ihhnkhka8hgy" path="res://Assets/Models/Characters/Mafia/Mafia.tscn" id="7_nf4y5"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ewuew"]
 panorama = ExtResource("1_7eor8")
@@ -57,3 +60,15 @@ transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 15.5082, 0.178216, 1
 
 [node name="House" parent="." instance=ExtResource("4_5afhl")]
 transform = Transform3D(-0.46, 0, -6.94581e-08, 0, 0.46, 0, 6.94581e-08, 0, -0.46, 15.3611, 9.53674e-07, 12.7516)
+
+[node name="Item" parent="." instance=ExtResource("5_fcxdx")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 14.6277, 0.617634, 10.626)
+
+[node name="doneBoss" parent="." instance=ExtResource("6_k3kod")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.21177, 0, 8.21549)
+
+[node name="Mafia" parent="." instance=ExtResource("7_nf4y5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09743, 0, 10.2241)
+
+[node name="Mafia2" parent="." instance=ExtResource("7_nf4y5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48608, 0, 9.7202)

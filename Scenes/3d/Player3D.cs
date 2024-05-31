@@ -79,11 +79,6 @@ public partial class Player3D : CharacterBody3D
 		if(_currentItem != null){
 			_currentItem.MoveOnPosition(_itemPosition.GlobalPosition);
 		}
-		// if( && ){
-		// 	var a = ;
-		// 	a.MoveOnPosition(_itemPosition.GlobalPosition);
-		// 	//obj.MoveOnPosition(_itemPosition.Position);
-		// }
 		if(isMovementOn){
 			Movement(delta);
 		}
@@ -114,8 +109,6 @@ public partial class Player3D : CharacterBody3D
 			_stepAudio.Play();
 			_stepTimer.Start();
 		}
-
-		//GD.Print("Velocity: ", Velocity);
 		Velocity = velocity;
 		MoveAndSlide();
 	}
